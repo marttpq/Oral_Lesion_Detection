@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firestore Test</title>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <h1>Firestore Test</h1>
+    <button onclick="testFirestore()">Test Firestore</button>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyA5JaKlfLELVDf6EoXAzvH8BAQa0Ii6Ihg",
+            authDomain: "login-with-fireboot.firebaseapp.com",
+            projectId: "login-with-fireboot",
+            storageBucket: "login-with-fireboot.firebasestorage.app",
+            messagingSenderId: "639645101081",
+            appId: "1:639645101081:web:59a5b7243588ac3980ce88"
+        };
+
+        // Define db at the global scope
+        let db;
+
+        try {
+            const app = firebase.initializeApp(firebaseConfig);
+            db = firebase.firestore(app);
+            console.log("Firebase initialized successfully.");
+        } catch (error) {
+            console.error("Failed to initialize Firebase: ", error);
+        }
+
+        function testFirestore() {
+            if (!db) {
+                console.error("Firestore is not initialized.");
+                alert("Firestore is not initialized. Check the console for details.");
+                return;
+            }
+            console.log("Attempting to add document...");
+            db.collection("testCollection").add({
+                name: "Test User",
+                timestamp: new Date()
+            })
+            .then(() => {
+                console.log("Document successfully written!");
+                alert("Document successfully written!");
+            })
+            .catch((error) => {
+                console.error("Error writing document: ", error);
+                alert("Failed to write document. Check console for details.");
+            });
+        }
+    </script>
+</body>
+</html>

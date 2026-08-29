@@ -1,0 +1,11 @@
+.git
+.gitignore
+.env
+*.md
+ai-engine.zip
+frontend/node_modules
+frontend/dist
+backend/static/uploads/*
+backend/static/outputs/*
+**/__pycache__
+**/*.pyc

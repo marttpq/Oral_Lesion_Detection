@@ -1,0 +1,54 @@
+# PyTorch CPU-only index (must be first so pip finds the +cpu variants)
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# Core web framework
+flask>=3.0.0
+
+# YOLO detection
+ultralytics==8.1.31
+
+# Computer vision
+opencv-python-headless
+Pillow
+
+# HTTP / networking
+requests>=2.32.3,<3
+urllib3>=1.26,<3
+
+# Data
+pandas
+numpy
+
+# ML / compute (CPU-only builds)
+torch==2.3.0+cpu
+torchvision==0.18.0+cpu
+torchaudio==2.3.0+cpu
+
+# Firebase (admin SDK for server-side auth)
+firebase-admin
+
+# LINE Bot SDK v3
+line-bot-sdk>=3.0.0
+
+# Misc utilities
+python-dotenv
+psutil
+pyyaml
+tqdm
+seaborn
+
+# Validation / serialisation
+pydantic>=2.0.3,<3
+aenum>=3.1.11
+python_dateutil>=2.5.3
+Deprecated
+future
+
+# Production WSGI server + async worker
+gunicorn>=22.0.0
+gevent>=23.9.1
+
+# Redis-backed inference queue (RQ)
+# If Redis is not available the app falls back to the in-process thread queue.
+redis>=5.0.0
+rq>=1.16.0

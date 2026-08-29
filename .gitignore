@@ -1,0 +1,107 @@
+# ==========================================
+# Python & Environments
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ==========================================
+# Frontend / Node.js
+# ==========================================
+node_modules/
+**/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.local
+
+# ==========================================
+# Uploaded & Temporary Output Files
+# ==========================================
+backend/static/uploads/
+!backend/static/uploads/.gitkeep
+backend/static/outputs/
+!backend/static/outputs/.gitkeep
+static/uploads/
+!static/uploads/.gitkeep
+static/outputs/
+!static/outputs/.gitkeep
+COOKIEproject/app/static/output/
+!COOKIEproject/app/static/output/.gitkeep
+COOKIEproject/app/results/
+!COOKIEproject/app/results/.gitkeep
+**/outputs/
+**/uploads/
+**/output/
+**/results/
+
+
+
+
+
+# ==========================================
+# Environment Variables & Secrets
+# ==========================================
+.env
+.env.local
+.env.*.local
+
+# ==========================================
+# IDE & Operating System Files
+# ==========================================
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp
+*.swo
+
+# ==========================================
+# Archive / Temp Files
+# ==========================================
+*.zip
+*.tar.gz
+*.rar
+
+# ==========================================
+# AI Model Weights & Checkpoints (Too large for Git)
+# ==========================================
+*.pt
+*.pth
+*.bin
+*.onnx
+*.weights
+*.h5
+*.ckpt
+

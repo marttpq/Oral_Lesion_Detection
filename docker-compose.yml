@@ -1,0 +1,70 @@
+
+
+services:
+  # ============================================================
+  # 1. Frontend Service (React + Vite + Tailwind CSS)
+  # ============================================================
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: oralscan-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - oralscan-network
+    restart: unless-stopped
+
+  # ============================================================
+  # 2. Backend API Gateway Service (FastAPI)
+  # ============================================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: oralscan-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - AI_ENGINE_URL=http://ai-engine:8001
+    volumes:
+      - ./backend:/app
+      - ./backend/static:/app/static
+    depends_on:
+      - ai-engine
+    networks:
+      - oralscan-network
+    restart: unless-stopped
+
+  # ============================================================
+  # 3. AI Inference Engine Service (PyTorch + YOLO + Transformers)
+  # ============================================================
+  ai-engine:
+    build:
+      context: ./ai-engine
+      dockerfile: Dockerfile
+    container_name: oralscan-ai-engine
+    ports:
+      - "8001:8001"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - FUSION_ALPHA=0.6
+    volumes:
+      - ./ai-engine:/app
+    networks:
+      - oralscan-network
+    restart: unless-stopped
+
+# ============================================================
+# Shared Microservices Network
+# ============================================================
+networks:
+  oralscan-network:
+    driver: bridge

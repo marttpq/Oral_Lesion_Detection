@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesion Detection</title>
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/detect.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ url_for ('static', filename='image/production.png') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+        }
+    </style>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img
+                src="{{ url_for('static', filename='image/Logo.png') }}"
+                alt="Logo"
+                class="img-fluid logo"
+                style="max-width: 100px; height: auto;"
+                />
+            </a>
+
+            <!-- Toggler/collapsibe Button for mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/detect">ตรวจจับรอยโรค</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/test">ติดต่อแจ้งปัญหาเรื่องซอฟต์แวร์</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                            </svg>
+                            {% if user %}
+                                {{ user }}
+                            {% else %}
+                                โปรไฟล์
+                            {% endif %}
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                      d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                                <path fill-rule="evenodd"
+                                      d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                            </svg> ออกจากระบบ
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    
+
+    
+    <div class="content background-color">
+        <div class="left">
+            <div class="left-input your-block">
+                <p class="mt-5">Input
+                    <img src="static/image/big-data.png" width="20px" height="20px">
+                </p>
+            </div>
+            <div class="container-left">
+                <div class="form">
+                    <form id="sectionForm" method="post" enctype="multipart/form-data" action="/uploaded" >
+                        <div class="input-group mt-3">
+                            <!----<label class="upload" id = "filename" for="file"><img src="static/image/upload.png" width="18px"
+                                    height="18px"> Select Image </label> --->
+                                <input class="form-control" type="file" id="file" name="file" required accept="image/*" onchange="validateFileType()">
+                        </div>
+                        <div class="radio-button-container">
+                            <label for="model_version">
+                                <h3 class="mt-3">Model Version:</h3>
+                            </label>
+                            <!-- <div class="radio-button">
+                                <input type="radio" class="radio-button__input" id="radio1" name="model_version"
+                                    value="v7">
+                                <label class="radio-button__label" for="radio1">
+                                    <span class="radio-button__custom"></span>
+                                    YOLOv7
+                                </label>
+                            </div> -->
+                            <div class="radio-button">
+                                <input type="radio" class="radio-button__input" id="radio2" checked name="model_version"
+                                    value="v8">
+                                <label class="radio-button__label" for="radio2">
+                                    <span class="radio-button__custom"></span>
+                                    YOLOv8
+                                </label>
+                            </div>
+                        </div>
+                        <div class="patient-head your-block">
+                            <h3 class="mt-3">Patient Info</h3>
+                            <p>*At least 1 check</p>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="check6" name="checkboxes[]" value="noSymptoms">
+                                    <label class="form-check-label" for="check6">ไม่มีอาการ</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="check1" name="checkboxes[]" value="drinkAlcohol">
+                                    <label class="form-check-label" for="check1">ดื่มแอลกอฮอล์</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="check2" name="checkboxes[]" value="smoking">
+                                    <label class="form-check-label" for="check2">สูบบุหรี่</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="check3" name="checkboxes[]" value="chewBetelNut">
+                                    <label class="form-check-label" for="check3">เคี้ยวหมาก</label>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="check4" name="checkboxes[]" value="eatSpicyFood">
+                                    <label class="form-check-label" for="check4">กินเผ็ดแสบ</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="check5" name="checkboxes[]" value="wipeOff">
+                                    <label class="form-check-label" for="check5">ลอกออกได้</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="check7" name="checkboxes[]" value="alwaysHurts">
+                                    <label class="form-check-label" for="check7">เจ็บแสบตลอดเวลา</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="button-layout ">
+                            <button class="button" type="submit" value="Upload and Process" >Submit</button>
+                        </div>
+                        {% if image_output %}
+                        
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="modal fade" id="outputModal" tabindex="-1" aria-labelledby="outputModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="outputModalLabel">Lesion Detection Output</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- Left side: Picture -->
+                        <div class="col-md-6 d-flex justify-content-center align-items-center">
+                            <img src="{{ image_output }}" alt="Processed Image" class="img-fluid" style="max-width: 100%; max-height: 500px;">
+                        </div>
+    
+                        <!-- Right side: Text -->
+                        <div class="col-md-6">
+                            <p>จากรูปภาพ เป็นการแสดงผลการตรวจจับรอยโรค คะแนนความมั่นใจแต่ละรอยโรค คะแนนเต็ม 1</p>
+                            <p>ระบบผู้เชี่ยวชาญ สามารถสรุปผลการวิเคราะห์รอยโรคร่วมกับประวัติผู้ป่วย มีโอกาสเป็นไปได้
+                                <span class="highlight">{{ eva_output }}%</span> ที่จะเป็นรอยโรค
+                                <span class="highlight">{{ name_out }}</span>
+                            </p>
+    
+                            <!-- Add input for name -->
+                            <div class="mb-3">
+                                <label for="userNameInput" class="form-label">Enter Your Name:</label>
+                                <input type="text" id="userNameInput" class="form-control" placeholder="Enter your name">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="saveToFirebase()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "{{ config.FIREBASE_API_KEY }}",
+            authDomain: "{{ config.FIREBASE_AUTH_DOMAIN }}",
+            projectId: "{{ config.FIREBASE_PROJECT_ID }}",
+            storageBucket: "{{ config.FIREBASE_STORAGE_BUCKET }}",
+            messagingSenderId: "{{ config.FIREBASE_MESSAGING_SENDER_ID }}",
+            appId: "{{ config.FIREBASE_APP_ID }}"
+        };
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore(app);
+        
+        // JavaScript variables for eva_output and name_out passed from Flask
+        const evaOutput = "{{ eva_output }}";
+        const nameOut = "{{ name_out }}";
+    
+        function saveToFirebase() {
+            const userName = document.getElementById("userNameInput").value;
+            if (!userName) {
+                alert("Please enter your name.");
+                return;
+            }
+    
+            // Save data to Firestore
+            db.collection("users").add({
+                name: userName,
+                eva_output: evaOutput,
+                name_out: nameOut,
+                timestamp: new Date()
+            })
+            .then(() => {
+                console.log("Document successfully written!");
+                alert("Document successfully written!");
+                
+                // Clear form data after successful save
+                document.getElementById("userNameInput").value = "";
+                document.getElementById("file").value = "";
+                
+                // Reset checkboxes
+                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                
+                // Close the modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('outputModal'));
+                modal.hide();
+                
+                // Optional: Refresh the page or redirect
+                // window.location.reload();
+                // or
+                window.location.href = "/detect";  // Redirect to detect page
+            })
+            .catch((error) => {
+                console.error("Error writing document: ", error);
+                alert("Failed to write document. Check console for details.");
+            });
+        }
+    </script>
+    
+        
+    <footer class="footer">
+        <div class="footer-container">
+    
+            <!-- Picture Section -->
+            <div class="footer-section">
+                <h3>Our LEGO</h3>
+                <img
+              src="{{ url_for('static', filename='image/Logo.png') }}"
+              alt="Logo"
+              class="img-fluid logo"
+              style="max-width: 150px; height: auto; background-color: white;"
+            />
+            </div>
+  
+            <!-- Company Info -->
+            <div class="footer-section">
+              <h3>About Us</h3>
+              <p>
+                  We provide top-notch services and solutions tailored to your needs. 
+                  Our goal is to make your experience seamless and professional.
+                  I want to go Home.
+              </p>
+          </div>
+  
+          
+  
+  
+            <!-- Social Media Links -->
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="footer-links">
+                  <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 48 48">
+                      <path fill="#212121" fill-rule="evenodd" d="M38,42H10c-2.209,0-4-1.791-4-4V10c0-2.209,1.791-4,4-4h28	c2.209,0,4,1.791,4,4v28C42,40.209,40.209,42,38,42z" clip-rule="evenodd"></path><path fill="#fff" d="M34.257,34h-6.437L13.829,14h6.437L34.257,34z M28.587,32.304h2.563L19.499,15.696h-2.563 L28.587,32.304z"></path><polygon fill="#fff" points="15.866,34 23.069,25.656 22.127,24.407 13.823,34"></polygon><polygon fill="#fff" points="24.45,21.721 25.355,23.01 33.136,14 31.136,14"></polygon>
+                      </svg>
+                      X
+                  </a>
+                  <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 48 48">
+                      <linearGradient id="Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1" x1="9.993" x2="40.615" y1="9.993" y2="40.615" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2aa4f4"></stop><stop offset="1" stop-color="#007ad9"></stop></linearGradient><path fill="url(#Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1)" d="M24,4C12.954,4,4,12.954,4,24s8.954,20,20,20s20-8.954,20-20S35.046,4,24,4z"></path><path fill="#fff" d="M26.707,29.301h5.176l0.813-5.258h-5.989v-2.874c0-2.184,0.714-4.121,2.757-4.121h3.283V12.46 c-0.577-0.078-1.797-0.248-4.102-0.248c-4.814,0-7.636,2.542-7.636,8.334v3.498H16.06v5.258h4.948v14.452 C21.988,43.9,22.981,44,24,44c0.921,0,1.82-0.084,2.707-0.204V29.301z"></path>
+                      </svg>
+                      Facebook
+                  </a>
+                  <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 48 48">
+                      <path fill="#00c300" d="M12.5,42h23c3.59,0,6.5-2.91,6.5-6.5v-23C42,8.91,39.09,6,35.5,6h-23C8.91,6,6,8.91,6,12.5v23C6,39.09,8.91,42,12.5,42z"></path><path fill="#fff" d="M37.113,22.417c0-5.865-5.88-10.637-13.107-10.637s-13.108,4.772-13.108,10.637c0,5.258,4.663,9.662,10.962,10.495c0.427,0.092,1.008,0.282,1.155,0.646c0.132,0.331,0.086,0.85,0.042,1.185c0,0-0.153,0.925-0.187,1.122c-0.057,0.331-0.263,1.296,1.135,0.707c1.399-0.589,7.548-4.445,10.298-7.611h-0.001C36.203,26.879,37.113,24.764,37.113,22.417z M18.875,25.907h-2.604c-0.379,0-0.687-0.308-0.687-0.688V20.01c0-0.379,0.308-0.687,0.687-0.687c0.379,0,0.687,0.308,0.687,0.687v4.521h1.917c0.379,0,0.687,0.308,0.687,0.687C19.562,25.598,19.254,25.907,18.875,25.907z M21.568,25.219c0,0.379-0.308,0.688-0.687,0.688s-0.687-0.308-0.687-0.688V20.01c0-0.379,0.308-0.687,0.687-0.687s0.687,0.308,0.687,0.687V25.219z M27.838,25.219c0,0.297-0.188,0.559-0.47,0.652c-0.071,0.024-0.145,0.036-0.218,0.036c-0.215,0-0.42-0.103-0.549-0.275l-2.669-3.635v3.222c0,0.379-0.308,0.688-0.688,0.688c-0.379,0-0.688-0.308-0.688-0.688V20.01c0-0.296,0.189-0.558,0.47-0.652c0.071-0.024,0.144-0.035,0.218-0.035c0.214,0,0.42,0.103,0.549,0.275l2.67,3.635V20.01c0-0.379,0.309-0.687,0.688-0.687c0.379,0,0.687,0.308,0.687,0.687V25.219z M32.052,21.927c0.379,0,0.688,0.308,0.688,0.688c0,0.379-0.308,0.687-0.688,0.687h-1.917v1.23h1.917c0.379,0,0.688,0.308,0.688,0.687c0,0.379-0.309,0.688-0.688,0.688h-2.604c-0.378,0-0.687-0.308-0.687-0.688v-2.603c0-0.001,0-0.001,0-0.001c0,0,0-0.001,0-0.001v-2.601c0-0.001,0-0.001,0-0.002c0-0.379,0.308-0.687,0.687-0.687h2.604c0.379,0,0.688,0.308,0.688,0.687s-0.308,0.687-0.688,0.687h-1.917v1.23H32.052z"></path>
+                      </svg>
+                      Line
+                  </a>
+                  <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 48 48">
+                      <radialGradient id="yOrnnhliCrdS2gy~4tD8ma_Xy10Jcu1L2Su_gr1" cx="19.38" cy="42.035" r="44.899" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fd5"></stop><stop offset=".328" stop-color="#ff543f"></stop><stop offset=".348" stop-color="#fc5245"></stop><stop offset=".504" stop-color="#e64771"></stop><stop offset=".643" stop-color="#d53e91"></stop><stop offset=".761" stop-color="#cc39a4"></stop><stop offset=".841" stop-color="#c837ab"></stop></radialGradient><path fill="url(#yOrnnhliCrdS2gy~4tD8ma_Xy10Jcu1L2Su_gr1)" d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z"></path><radialGradient id="yOrnnhliCrdS2gy~4tD8mb_Xy10Jcu1L2Su_gr2" cx="11.786" cy="5.54" r="29.813" gradientTransform="matrix(1 0 0 .6663 0 1.849)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4168c9"></stop><stop offset=".999" stop-color="#4168c9" stop-opacity="0"></stop></radialGradient><path fill="url(#yOrnnhliCrdS2gy~4tD8mb_Xy10Jcu1L2Su_gr2)" d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z"></path><path fill="#fff" d="M24,31c-3.859,0-7-3.14-7-7s3.141-7,7-7s7,3.14,7,7S27.859,31,24,31z M24,19c-2.757,0-5,2.243-5,5	s2.243,5,5,5s5-2.243,5-5S26.757,19,24,19z"></path><circle cx="31.5" cy="16.5" r="1.5" fill="#fff"></circle><path fill="#fff" d="M30,37H18c-3.859,0-7-3.14-7-7V18c0-3.86,3.141-7,7-7h12c3.859,0,7,3.14,7,7v12	C37,33.86,33.859,37,30,37z M18,13c-2.757,0-5,2.243-5,5v12c0,2.757,2.243,5,5,5h12c2.757,0,5-2.243,5-5V18c0-2.757-2.243-5-5-5H18z"></path>
+                      </svg>
+                      Instagram
+                  </a>
+              </div>
+              
+            </div>
+          
+        </div>
+  
+        <div class="footer-bottom">
+            &copy; 2024 MYCompany. All Not All Rights Reserved.
+        </div>
+    </footer>
+   
+    
+</body>
+
+<script>
+    window.imageOutput = "{{ image_output }}";
+</script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</html>

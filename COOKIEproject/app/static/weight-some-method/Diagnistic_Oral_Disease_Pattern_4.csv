@@ -1,0 +1,36 @@
+﻿fault,behavior,weight
+leukoplakia,drink alcohol,2
+leukoplakia,smoking,2
+leukoplakia,Chew betel nut,1
+leukoplakia,Eat spicy food,0
+leukoplakia,Can be wiped off,0
+leukoplakia,No symptoms,0
+leukoplakia,It always hurts,0
+lichenplanus,drink alcohol,0
+lichenplanus,smoking,0
+lichenplanus,Chew betel nut,0
+lichenplanus,Eat spicy food,2
+lichenplanus,Can be wiped off,0
+lichenplanus,No symptoms,0
+lichenplanus,It always hurts,0
+candidiasis,drink alcohol,0
+candidiasis,smoking,0
+candidiasis,Chew betel nut,0
+candidiasis,Eat spicy food,0
+candidiasis,Can be wiped off,2
+candidiasis,No symptoms,0
+candidiasis,It always hurts,0
+otherwhite,drink alcohol,0
+otherwhite,smoking,0
+otherwhite,Chew betel nut,0
+otherwhite,Eat spicy food,0
+otherwhite,Can be wiped off,0
+otherwhite,No symptoms,3
+otherwhite,It always hurts,0
+ulcer,drink alcohol,0
+ulcer,smoking,0
+ulcer,Chew betel nut,0
+ulcer,Eat spicy food,0
+ulcer,Can be wiped off,0
+ulcer,No symptoms,0
+ulcer,It always hurts,2

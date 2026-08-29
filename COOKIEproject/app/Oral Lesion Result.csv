@@ -1,0 +1,650 @@
+Image Name,Labeled Result,Patient Info,Detected Summarized,Lesion Detected
+leu (1).JPG,results/6.jpg,"['drinkAlcohol', 'smoking']",Leukoplakia 108,{'Leukoplakia': [0.58]}
+leu (1).JPG,results/7.jpg,['smoking'],Leukoplakia 108,{'Leukoplakia': [0.58]}
+leu (1).JPG,results/7.jpg,['smoking'],Leukoplakia 108,{'Leukoplakia': [0.58]}
+leu (1).JPG,results/7.jpg,['smoking'],Leukoplakia 108,{'Leukoplakia': [0.58]}
+leu (1).JPG,results/7.jpg,['smoking'],Leukoplakia 108,{'Leukoplakia': [0.58]}
+leu (1).JPG,results/7.jpg,['smoking'],Leukoplakia 108,{'Leukoplakia': [0.58]}
+leu (1).JPG,results/7.jpg,['smoking'],Leukoplakia 108,{'Leukoplakia': [0.58]}
+leu (1).JPG,results/7.jpg,['smoking'],Leukoplakia 108,{'Leukoplakia': [0.58]}
+leu (1).JPG,results/7.jpg,['smoking'],Leukoplakia 108,{'Leukoplakia': [0.58]}
+leu (1).JPG,results/8.jpg,['smoking'],Leukoplakia 108,{'Leukoplakia': [0.58]}
+leu (1).JPG,results/9.jpg,['smoking'],Leukoplakia 108,{'Leukoplakia': [0.58]}
+leu (1).JPG,results/9.jpg,['smoking'],Leukoplakia 108,{'Leukoplakia': [0.58]}
+leu (1).JPG,results/10.jpg,['smoking'],Leukoplakia 108,{'Leukoplakia': [0.58]}
+leu (2).JPG,results/11.jpg,['noSymptoms'],Leukoplakia 88,{'Leukoplakia': 0.88}
+leu (3).JPG,results/12.jpg,['noSymptoms'],Leukoplakia 85,{'Leukoplakia': 0.85}
+leu (1).JPG,results/13.jpg,['smoking'],Leukoplakia 108,{'Leukoplakia': [0.58]}
+leu (2).JPG,results/14.jpg,['noSymptoms'],Leukoplakia 88,{'Leukoplakia': 0.88}
+leu (3).JPG,results/15.jpg,['noSymptoms'],Leukoplakia 85,{'Leukoplakia': 0.85}
+leu (4).JPG,results/16.jpg,['smoking'],Leukoplakia 130,"{'Leukoplakia': [0.87, 0.85, 0.81, 0.8, 0.77, 0.68]}"
+leu (6).JPG,results/17.jpg,['noSymptoms'],Leukoplakia 77,{'Leukoplakia': 0.77}
+leu (7).JPG,results/18.jpg,['noSymptoms'],Leukoplakia 48,{'Leukoplakia': 0.48}
+leu (6).JPG,results/19.jpg,['smoking'],Leukoplakia 127,"{'Leukoplakia': [0.79, 0.75]}"
+leu (1).JPG,results/20.jpg,['smoking'],Leukoplakia 108,{'Leukoplakia': [0.58]}
+leu (2).JPG,results/21.jpg,['noSymptoms'],Leukoplakia 88,{'Leukoplakia': 0.88}
+leu (3).JPG,results/22.jpg,['noSymptoms'],Leukoplakia 85,{'Leukoplakia': 0.85}
+leu (4).JPG,results/23.jpg,['smoking'],Leukoplakia 130,"{'Leukoplakia': [0.87, 0.85, 0.81, 0.8, 0.77, 0.68]}"
+leu (5).JPG,results/24.jpg,['smoking'],Leukoplakia 119,"{'Leukoplakia': [0.88, 0.7, 0.5]}"
+leu (6).JPG,results/25.jpg,['noSymptoms'],Leukoplakia 77,{'Leukoplakia': 0.77}
+leu (7).JPG,results/26.jpg,['noSymptoms'],Leukoplakia 48,{'Leukoplakia': 0.48}
+leu (8).JPG,results/27.jpg,['chewBetelNut'],Leukoplakia 84,"{'Leukoplakia': [0.35, 0.33]}"
+leu (10).jpg,results/28.jpg,['noSymptoms'],  Unpredictable,{}
+leu (10).jpg,results/29.jpg,['noSymptoms'],  Unpredictable,{}
+leu (11).jpg,results/30.jpg,['noSymptoms'],Leukoplakia 42,{'Leukoplakia': 0.42}
+leu (11).jpg,results/31.jpg,['smoking'],Leukoplakia 92,"{'Leukoplakia': [0.52, 0.31]}"
+leu (12).jpg,results/32.jpg,['smoking'],Leukoplakia 133,{'Leukoplakia': [0.83]}
+leu (13).jpg,results/33.jpg,['smoking'],Leukoplakia 108,"{'Leukoplakia': [0.77, 0.67, 0.3]}"
+leu (17).jpg,results/34.jpg,['smoking'],Leukoplakia 132,"{'Leukoplakia': [0.86, 0.78]}"
+leu (18).jpg,results/35.jpg,['chewBetelNut'],Leukoplakia 68,"{'OtherWhite': [0.9], 'Candidiasis': [0.77, 0.71, 0.61], 'Leukoplakia': [0.54]}"
+leu (19).jpg,results/36.jpg,['smoking'],Leukoplakia 107,"{'Leukoplakia': [0.85, 0.74, 0.54, 0.41, 0.31]}"
+leu (20).jpg,results/37.jpg,['noSymptoms'],Leukoplakia 28,"{'Leukoplakia': 0.56, 'Lichenplanus': 0.3}"
+leu (21).jpg,results/38.jpg,['smoking'],Leukoplakia 133,{'Leukoplakia': [0.83]}
+leu (22).jpg,results/39.jpg,['smoking'],Leukoplakia 113,"{'Leukoplakia': [0.89, 0.87, 0.72, 0.58, 0.51, 0.45, 0.42]}"
+leu (23).jpg,results/40.jpg,['smoking'],Leukoplakia 118,"{'Leukoplakia': [0.95, 0.9, 0.85, 0.36, 0.32]}"
+leu (24).jpg,results/41.jpg,['noSymptoms'],Leukoplakia 88,{'Leukoplakia': 0.88}
+leu (25).JPG,results/42.jpg,['noSymptoms'],  Unpredictable,{}
+leu (26).JPG,results/43.jpg,['noSymptoms'],OtherWhite 69,"{'Leukoplakia': [0.72, 0.66, 0.42], 'OtherWhite': [0.37]}"
+leu (27).JPG,results/44.jpg,['smoking'],Leukoplakia 120,{'Leukoplakia': [0.7]}
+leu (28).JPG,results/45.jpg,['smoking'],Leukoplakia 107,{'Leukoplakia': [0.57]}
+leu (29).JPG,results/46.jpg,['noSymptoms'],OtherWhite 123,{'OtherWhite': [0.73]}
+leu (30).JPG,results/47.jpg,['noSymptoms'],Ulcer 15,"{'Ulcer': 0.44, 'Candidiasis': 0.38, 'Leukoplakia': 0.42}"
+leu (31).JPG,results/48.jpg,['smoking'],Leukoplakia 98,{'Leukoplakia': [0.48]}
+leu (32).JPG,results/49.jpg,['noSymptoms'],Leukoplakia 72,{'Leukoplakia': 0.72}
+leu (33).JPG,results/50.jpg,['noSymptoms'],Leukoplakia 53,{'Leukoplakia': 0.53}
+leu (34).JPG,results/51.jpg,['noSymptoms'],Leukoplakia 50,{'Leukoplakia': 0.5}
+leu (35).JPG,results/52.jpg,['noSymptoms'],Leukoplakia 61,{'Leukoplakia': 0.61}
+leu (36).JPG,results/53.jpg,['noSymptoms'],Leukoplakia 41,{'Leukoplakia': 0.41}
+leu (37).JPG,results/54.jpg,['smoking'],Leukoplakia 98,"{'Leukoplakia': [0.74, 0.52, 0.51, 0.31, 0.3]}"
+leu (38).JPG,results/55.jpg,['noSymptoms'],Leukoplakia 90,{'Leukoplakia': 0.9}
+leu (39).JPG,results/56.jpg,['noSymptoms'],Leukoplakia 82,{'Leukoplakia': 0.82}
+leu (40).JPG,results/57.jpg,['noSymptoms'],Leukoplakia 77,{'Leukoplakia': 0.77}
+leuu (1).JPG,results/58.jpg,['noSymptoms'],Leukoplakia 79,{'Leukoplakia': 0.79}
+leuu (2).JPG,results/59.jpg,['noSymptoms'],Leukoplakia 83,{'Leukoplakia': 0.83}
+leuu (3).JPG,results/60.jpg,['noSymptoms'],Leukoplakia 60,{'Leukoplakia': 0.6}
+leuu (4).JPG,results/61.jpg,['noSymptoms'],Leukoplakia 70,{'Leukoplakia': 0.7}
+leu (1).JPG,results/62.jpg,"['drinkAlcohol', 'smoking', 'eatSpicyFood']",Leukoplakia 108,{'Leukoplakia': [0.58]}
+leu (1).JPG,results/63.jpg,"['drinkAlcohol', 'smoking', 'eatSpicyFood']",Leukoplakia 79,{'Leukoplakia': [0.58]}
+leu (1).JPG,results/64.jpg,['smoking'],Leukoplakia 79,{'Leukoplakia': [0.58]}
+leu (1).JPG,results/65.jpg,['smoking'],Leukoplakia 79,{'Leukoplakia': [0.58]}
+leu (1).JPG,results/66.jpg,['smoking'],Leukoplakia 79,{'Leukoplakia': [0.58]}
+leu (5).JPG,results/67.jpg,"['chewBetelNut', 'eatSpicyFood']",Leukoplakia 73,"{'Leukoplakia': [0.88, 0.7, 0.5]}"
+ul (1).JPG,results/68.jpg,['alwaysHurts'],Ulcer 97,{'Ulcer': [0.93]}
+ul (2).JPG,results/69.jpg,['alwaysHurts'],Ulcer 95,{'Ulcer': [0.89]}
+ul (3).JPG,results/70.jpg,['alwaysHurts'],Ulcer 83,{'Ulcer': [0.66]}
+leu (1).JPG,results/71.jpg,['smoking'],Leukoplakia 79,{'Leukoplakia': [0.58]}
+leu (4).JPG,results/72.jpg,['smoking'],Leukoplakia 63,"{'Leukoplakia': [0.87, 0.85, 0.81, 0.8, 0.77, 0.68]}"
+leu (5).JPG,results/73.jpg,['smoking'],Leukoplakia 73,"{'Leukoplakia': [0.88, 0.7, 0.5]}"
+leu (8).JPG,results/74.jpg,['chewBetelNut'],Leukoplakia 67,"{'Leukoplakia': [0.35, 0.33]}"
+leu (11).jpg,results/75.jpg,['smoking'],Leukoplakia 71,"{'Leukoplakia': [0.52, 0.31]}"
+leu (12).jpg,results/76.jpg,['smoking'],Leukoplakia 91,{'Leukoplakia': [0.83]}
+leu (13).jpg,results/77.jpg,['smoking'],Leukoplakia 69,"{'Leukoplakia': [0.77, 0.67, 0.3]}"
+leu (17).jpg,results/78.jpg,['smoking'],Leukoplakia 91,"{'Leukoplakia': [0.86, 0.78]}"
+leu (18).jpg,results/79.jpg,['chewBetelNut'],Leukoplakia 77,"{'OtherWhite': [0.9], 'Candidiasis': [0.77, 0.71, 0.61], 'Leukoplakia': [0.54]}"
+leu (19).jpg,results/80.jpg,['smoking'],Leukoplakia 61,"{'Leukoplakia': [0.85, 0.74, 0.54, 0.41, 0.31]}"
+leu (21).jpg,results/81.jpg,['smoking'],Leukoplakia 91,{'Leukoplakia': [0.83]}
+leu (22).jpg,results/82.jpg,['smoking'],Leukoplakia 59,"{'Leukoplakia': [0.89, 0.87, 0.72, 0.58, 0.51, 0.45, 0.42]}"
+leu (23).jpg,results/83.jpg,['smoking'],Leukoplakia 64,"{'Leukoplakia': [0.95, 0.9, 0.85, 0.36, 0.32]}"
+leu (27).JPG,results/84.jpg,['smoking'],Leukoplakia 85,{'Leukoplakia': [0.7]}
+leu (28).JPG,results/85.jpg,['smoking'],Leukoplakia 78,{'Leukoplakia': [0.57]}
+leu (31).JPG,results/86.jpg,['smoking'],Leukoplakia 74,{'Leukoplakia': [0.48]}
+leu (37).JPG,results/87.jpg,['smoking'],Leukoplakia 60,"{'Leukoplakia': [0.74, 0.52, 0.51, 0.31, 0.3]}"
+leu (31).JPG,results/88.jpg,['smoking'],Leukoplakia 74,{'Leukoplakia': [0.48]}
+li (1).JPG,results/89.jpg,['eatSpicyFood'],Lichenplanus 61,"{'Lichenplanus': [0.74, 0.69, 0.58, 0.49, 0.3]}"
+li (2).JPG,results/90.jpg,['eatSpicyFood'],Lichenplanus 71,"{'Lichenplanus': [0.85, 0.69, 0.37]}"
+li (4).JPG,results/91.jpg,['eatSpicyFood'],Lichenplanus 75,{'Lichenplanus': [0.5]}
+li (6).JPG,results/92.jpg,['eatSpicyFood'],Lichenplanus 74,"{'Lichenplanus': [0.75, 0.74, 0.64]}"
+li (8).jpg,results/93.jpg,['eatSpicyFood'],Lichenplanus 59,"{'Lichenplanus': [0.73, 0.71, 0.58, 0.44, 0.35, 0.32]}"
+li (14).jpg,results/94.jpg,['eatSpicyFood'],Lichenplanus 74,"{'Lichenplanus': [0.8, 0.72, 0.6]}"
+li (15).jpg,results/95.jpg,['eatSpicyFood'],Lichenplanus 97,{'Lichenplanus': [0.94]}
+li (16).jpg,results/96.jpg,['eatSpicyFood'],Lichenplanus 67,"{'Lichenplanus': [0.62, 0.55, 0.33]}"
+li (17).jpg,results/97.jpg,['eatSpicyFood'],Lichenplanus 59,"{'Lichenplanus': [0.61, 0.55, 0.45, 0.38, 0.36]}"
+li (18).jpg,results/98.jpg,['eatSpicyFood'],Lichenplanus 74,{'Lichenplanus': [0.48]}
+li (17).jpg,results/99.jpg,['eatSpicyFood'],Lichenplanus 59,"{'Lichenplanus': [0.61, 0.55, 0.45, 0.38, 0.36]}"
+li (4).JPG,results/100.jpg,['eatSpicyFood'],Lichenplanus 75,{'Lichenplanus': [0.5]}
+li (4).JPG,results/101.jpg,"['eatSpicyFood', 'wipeOff']",Lichenplanus 75,{'Lichenplanus': [0.5]}
+li (4).JPG,results/102.jpg,"['eatSpicyFood', 'wipeOff']",Lichenplanus 75,{'Lichenplanus': [0.5]}
+li (2).JPG,results/103.jpg,"['chewBetelNut', 'eatSpicyFood']",Lichenplanus 71,"{'Lichenplanus': [0.85, 0.69, 0.37]}"
+li (2).JPG,results/104.jpg,['eatSpicyFood'],Lichenplanus 71,"{'Lichenplanus': [0.85, 0.69, 0.37]}"
+li (4).JPG,results/105.jpg,['eatSpicyFood'],Lichenplanus 75,{'Lichenplanus': [0.5]}
+li (5).JPG,results/106.jpg,['eatSpicyFood'],Lichenplanus 68,"{'Lichenplanus': [0.6, 0.56, 0.43]}"
+li (5).JPG,results/107.jpg,"['eatSpicyFood', 'alwaysHurts']",Lichenplanus 68,"{'Lichenplanus': [0.6, 0.56, 0.43]}"
+can (1).jpg,results/108.jpg,['wipeOff'],Candidiasis 57,"{'Candidiasis': [0.43, 0.33, 0.32, 0.32, 0.3]}"
+can (1).jpg,results/109.jpg,['wipeOff'],Candidiasis 57,"{'Candidiasis': [0.43, 0.33, 0.32, 0.32, 0.3]}"
+can (4).jpg,results/110.jpg,['wipeOff'],Candidiasis 58,"{'Candidiasis': [0.66, 0.5, 0.34, 0.32, 0.3]}"
+can (7).jpg,results/111.jpg,['wipeOff'],Candidiasis 78,"{'Candidiasis': [0.68, 0.46]}"
+leu (1).JPG,results/112.jpg,"['drinkAlcohol', 'smoking']",Leukoplakia 79,{'Leukoplakia': [0.58]}
+leu (4).JPG,results/113.jpg,"['drinkAlcohol', 'smoking', 'chewBetelNut']",Leukoplakia 63,"{'Leukoplakia': [0.87, 0.85, 0.81, 0.8, 0.77, 0.68]}"
+leu (4).JPG,results/114.jpg,['smoking'],Leukoplakia 63,"{'Leukoplakia': [0.87, 0.85, 0.81, 0.8, 0.77, 0.68]}"
+B2a00001a.jpg,results/1.jpg,"['smoking', 'chewBetelNut', 'eatSpicyFood']",Leukoplakia 83,{'Leukoplakia': [0.65]}
+427971_1_En_9_Fig3_HTML.jpg,results/1.jpg,"['smoking', 'chewBetelNut', 'eatSpicyFood']",Leukoplakia 71,{'Leukoplakia': [0.42]}
+20Feb27BCpath45DX01.5e543348d5b1e.png,results/1.jpg,"['drinkAlcohol', 'chewBetelNut']",Candidiasis 41,{'Candidiasis': 0.41}
+51.jpg,results/2.jpg,"['smoking', 'eatSpicyFood', 'wipeOff']",  Unpredictable,{}
+2-Figure1-1.png,results/3.jpg,"['chewBetelNut', 'eatSpicyFood']",Leukoplakia 77,{'Leukoplakia': [0.54]}
+427971_1_En_9_Fig4_HTML.jpg,results/4.jpg,['drinkAlcohol'],  Unpredictable,{}
+3-Figure2-1.png,results/5.jpg,"['drinkAlcohol', 'smoking', 'chewBetelNut']",  Unpredictable,{}
+images (29).jpg,results/6.jpg,"['drinkAlcohol', 'smoking', 'chewBetelNut']",Ulcer 44,{'Ulcer': 0.74}
+images (29).jpg,results/7.jpg,"['drinkAlcohol', 'smoking', 'chewBetelNut']",Ulcer 44,{'Ulcer': 0.44}
+2-Figure1-1 (1).png,results/8.jpg,"['smoking', 'chewBetelNut']",Ulcer 33,{'Ulcer': 0.33}
+3-Figure2-1.png,results/9.jpg,"['smoking', 'chewBetelNut']",  Unpredictable,{}
+51.jpg,results/10.jpg,"['chewBetelNut', 'eatSpicyFood']",  Unpredictable,{}
+images (8).jpg,results/11.jpg,"['drinkAlcohol', 'chewBetelNut']",Leukoplakia 86,{'Leukoplakia': [0.72]}
+images (10).jpg,results/12.jpg,"['smoking', 'chewBetelNut']",Ulcer 34,{'Ulcer': 0.34}
+2-Figure1-1.png,results/13.jpg,"['smoking', 'chewBetelNut']",Leukoplakia 77,{'Leukoplakia': [0.54]}
+12445.jpg,results/14.jpg,"['eatSpicyFood', 'wipeOff']",Leukoplakia 51,{'Leukoplakia': 0.51}
+12445.jpg,results/15.jpg,"['eatSpicyFood', 'wipeOff']",Leukoplakia 51,{'Leukoplakia': 0.51}
+427971_1_En_9_Fig3_HTML.jpg,results/16.jpg,"['drinkAlcohol', 'chewBetelNut']",Leukoplakia 71,{'Leukoplakia': [0.42]}
+427971_1_En_9_Fig4_HTML.jpg,results/17.jpg,"['smoking', 'chewBetelNut']",  Unpredictable,{}
+51.jpg,results/18.jpg,"['drinkAlcohol', 'smoking']",  Unpredictable,{}
+images (5).jpg,results/19.jpg,"['smoking', 'chewBetelNut']",  Unpredictable,{}
+20Feb27BCpath45DX01.5e543348d5b1e.png,results/20.jpg,"['smoking', 'chewBetelNut']",Candidiasis 41,{'Candidiasis': 0.41}
+2-Figure1-1 (1).png,results/21.jpg,"['drinkAlcohol', 'smoking']",Ulcer 33,{'Ulcer': 0.33}
+2-Figure1-1 (1).png,results/22.jpg,"['drinkAlcohol', 'smoking']",Ulcer 33,{'Ulcer': 0.33}
+2013-10-03_11.03.20.jpg,results/23.jpg,"['drinkAlcohol', 'chewBetelNut']",OtherWhite 33,{'OtherWhite': 0.33}
+427971_1_En_9_Fig3_HTML.jpg,results/24.jpg,"['drinkAlcohol', 'chewBetelNut']",Leukoplakia 71,{'Leukoplakia': [0.42]}
+427971_1_En_9_Fig3_HTML.jpg,results/25.jpg,"['drinkAlcohol', 'chewBetelNut']",Leukoplakia 71,{'Leukoplakia': [0.42]}
+427971_1_En_9_Fig3_HTML.jpg,results/26.jpg,"['drinkAlcohol', 'chewBetelNut']",Leukoplakia 71,{'Leukoplakia': [0.42]}
+3-Figure2-1.png,results/27.jpg,"['smoking', 'chewBetelNut', 'eatSpicyFood']",  Unpredictable,{}
+427971_1_En_9_Fig4_HTML.jpg,results/28.jpg,"['smoking', 'chewBetelNut']",  Unpredictable,{}
+427971_1_En_9_Fig4_HTML.jpg,results/29.jpg,"['smoking', 'chewBetelNut']",  Unpredictable,{}
+427971_1_En_9_Fig4_HTML.jpg,results/30.jpg,"['smoking', 'chewBetelNut']",  Unpredictable,{}
+3-Figure2-1.png,results/31.jpg,"['drinkAlcohol', 'smoking']",  Unpredictable,{}
+427971_1_En_9_Fig4_HTML.jpg,results/32.jpg,"['chewBetelNut', 'eatSpicyFood']",  Unpredictable,{}
+427971_1_En_9_Fig4_HTML.jpg,results/33.jpg,"['drinkAlcohol', 'chewBetelNut']",  Unpredictable,{}
+3-Figure2-1.png,results/34.jpg,"['smoking', 'eatSpicyFood']",  Unpredictable,{}
+20Feb27BCpath45DX01.5e543348d5b1e.png,results/35.jpg,"['smoking', 'chewBetelNut']",Candidiasis 41,{'Candidiasis': 0.41}
+Oral-cavity-with-precancerous-lesion-of-planum-buccale_Q640.jpg,results/36.jpg,"['drinkAlcohol', 'smoking', 'chewBetelNut']",Candidiasis 29,"{'Candidiasis': 0.59, 'OtherWhite': 0.48}"
+Oral-cavity-with-precancerous-lesion-of-planum-buccale_Q640010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.jpg,results/37.jpg,"['drinkAlcohol', 'chewBetelNut']",Candidiasis 29,"{'Candidiasis': 0.59, 'OtherWhite': 0.48}"
+JIndianAcadOralMedRadiol_2014_26_2_152_143689_f5.jpg,results/38.jpg,"['drinkAlcohol', 'smoking']",  Unpredictable,{}
+images (12).jpg,results/39.jpg,"['smoking', 'eatSpicyFood']",Candidiasis 51,{'Candidiasis': 0.51}
+images (10).jpg,results/1.jpg,['noSymptoms'],Ulcer 34,{'Ulcer': 0.34}
+¥“«πÏ‚À≈¥ (2).jpg,results/2.jpg,['noSymptoms'],Leukoplakia 80,{'Leukoplakia': 0.8}
+2-Figure1-1 (1).png,results/3.jpg,['noSymptoms'],Ulcer 33,{'Ulcer': 0.33}
+2-Figure1-1 (1).png,results/4.jpg,['noSymptoms'],Ulcer 33,{'Ulcer': 0.33}
+2-Figure1-1 (1).png,results/5.jpg,['noSymptoms'],Ulcer 33,{'Ulcer': 0.33}
+2-Figure1-1.png,results/6.jpg,['noSymptoms'],Leukoplakia 54,{'Leukoplakia': 0.54}
+2-Figure1-1.png,results/7.jpg,['noSymptoms'],Leukoplakia 54,{'Leukoplakia': 0.54}
+2-Figure2-1.png,results/8.jpg,['noSymptoms'],Candidiasis 62,{'Candidiasis': 0.62}
+2-Figure1-1.png,results/9.jpg,['noSymptoms'],Leukoplakia 54,{'Leukoplakia': 0.54}
+2-Figure1-1.png,results/10.jpg,['noSymptoms'],Leukoplakia 54,{'Leukoplakia': 0.54}
+8180bf713ecc4e8ed20a8a758d614189.jpg,results/11.jpg,['noSymptoms'],  Unpredictable,{}
+1-s2.0-S2212440318308484-oooo1982-fig-0004.jpg,results/12.jpg,['noSymptoms'],Leukoplakia 31,{'Leukoplakia': 0.31}
+oooo1983-fig-0007_lrg.jpg,results/13.jpg,"['smoking', 'chewBetelNut']",Lichenplanus 42,{'Lichenplanus': 0.42}
+2-Figure2-1.png,results/14.jpg,['noSymptoms'],Candidiasis 62,{'Candidiasis': 0.62}
+oooo1983-fig-0007_lrg.jpg,results/15.jpg,"['smoking', 'chewBetelNut']",Lichenplanus 42,{'Lichenplanus': 0.42}
+oral-leukoplakia.jpg,results/16.jpg,['noSymptoms'],  Unpredictable,{}
+2-Figure1-1.png,results/17.jpg,['noSymptoms'],Leukoplakia 54,{'Leukoplakia': 0.54}
+oral-leukoplakia.jpg,results/18.jpg,['noSymptoms'],  Unpredictable,{}
+427971_1_En_9_Fig4_HTML.jpg,results/19.jpg,['noSymptoms'],  Unpredictable,{}
+premalignant oral lesions 2.jpg,results/20.jpg,['noSymptoms'],Leukoplakia 88,{'Leukoplakia': 0.88}
+2-Figure2-1.png,results/21.jpg,['noSymptoms'],Candidiasis 62,{'Candidiasis': 0.62}
+2-Figure2-1.png,results/22.jpg,['noSymptoms'],Candidiasis 62,{'Candidiasis': 0.62}
+2-Figure2-1.png,results/23.jpg,['noSymptoms'],Candidiasis 62,{'Candidiasis': 0.62}
+2-Figure2-1.png,results/24.jpg,['noSymptoms'],Candidiasis 62,{'Candidiasis': 0.62}
+precancerous-lesions-in-oral-cavity-43-638.jpg,results/25.jpg,['smoking'],Leukoplakia 82,{'Leukoplakia': [0.64]}
+oooo1983-fig-0007_lrg.jpg,results/26.jpg,['alwaysHurts'],Lichenplanus 42,{'Lichenplanus': 0.42}
+2-Figure2-1.png,results/27.jpg,['noSymptoms'],Candidiasis 62,{'Candidiasis': 0.62}
+2-Figure2-1.png,results/28.jpg,['noSymptoms'],Candidiasis 62,{'Candidiasis': 0.62}
+oral-leukoplakia.jpg,results/29.jpg,['smoking'],  Unpredictable,{}
+precancerous-lesions-in-oral-cavity-28-638.jpg,results/30.jpg,"['smoking', 'chewBetelNut']",Leukoplakia 82,"{'Leukoplakia': [0.74, 0.52]}"
+2-Figure2-1.png,results/31.jpg,['noSymptoms'],Candidiasis 62,{'Candidiasis': 0.62}
+premalignant oral lesions 1.jpg,results/32.jpg,['noSymptoms'],OtherWhite 60,"{'OtherWhite': [0.6, 0.45, 0.3, 0.3]}"
+leu (8).JPG,results/33.jpg,['noSymptoms'],Leukoplakia 34,{'Leukoplakia': 0.34}
+can (1).jpg,results/34.jpg,['noSymptoms'],Candidiasis 34,{'Candidiasis': 0.34}
+can (10).jpg,results/35.jpg,['noSymptoms'],Candidiasis 56,{'Candidiasis': 0.56}
+can (15).JPG,results/36.jpg,['noSymptoms'],Candidiasis 22,"{'Candidiasis': 0.44, 'Ulcer': 0.39}"
+lii (9).JPG,results/37.jpg,['noSymptoms'],  Unpredictable,{}
+ul (2).JPG,results/38.jpg,['noSymptoms'],Ulcer 89,{'Ulcer': 0.89}
+can (1).jpg,results/39.jpg,['noSymptoms'],Candidiasis 34,{'Candidiasis': 0.34}
+can (1).jpg,results/40.jpg,['noSymptoms'],Candidiasis 34,{'Candidiasis': 0.34}
+lii (1).JPG,results/41.jpg,['noSymptoms'],  Unpredictable,{}
+ot (23).jpg,results/42.jpg,['noSymptoms'],OtherWhite 86,{'OtherWhite': [0.73]}
+ot (22).jpg,results/43.jpg,['noSymptoms'],OtherWhite 74,{'OtherWhite': [0.49]}
+lii (2).JPG,results/44.jpg,['noSymptoms'],  Unpredictable,{}
+li (38).JPG,results/45.jpg,['noSymptoms'],  Unpredictable,{}
+lii (7).JPG,results/46.jpg,['noSymptoms'],Lichenplanus 29,"{'Lichenplanus': 0.58, 'Candidiasis': 0.3}"
+can (22).jpg,results/47.jpg,['noSymptoms'],Candidiasis 70,{'Candidiasis': 0.7}
+can (12).jpg,results/48.jpg,"['noSymptoms', 'drinkAlcohol']",Candidiasis 42,{'Candidiasis': 0.42}
+can (13).JPG,results/49.jpg,['noSymptoms'],Candidiasis 53,{'Candidiasis': 0.53}
+can (14).JPG,results/50.jpg,['noSymptoms'],Candidiasis 56,{'Candidiasis': 0.56}
+can (12).jpg,results/51.jpg,['noSymptoms'],Candidiasis 42,{'Candidiasis': 0.42}
+can (19).jpg,results/52.jpg,['noSymptoms'],Candidiasis 33,{'Candidiasis': 0.33}
+can (12).jpg,results/53.jpg,['noSymptoms'],Candidiasis 42,{'Candidiasis': 0.42}
+can (12).jpg,results/54.jpg,['noSymptoms'],Candidiasis 42,{'Candidiasis': 0.42}
+can (12).jpg,results/55.jpg,['noSymptoms'],Candidiasis 42,{'Candidiasis': 0.42}
+can (20).jpg,results/56.jpg,['noSymptoms'],Candidiasis 39,{'Candidiasis': 0.39}
+cann (5).jpg,results/57.jpg,['noSymptoms'],Candidiasis 42,{'Candidiasis': 0.42}
+can (12).jpg,results/58.jpg,['noSymptoms'],Candidiasis 42,{'Candidiasis': 0.42}
+can (21).jpg,results/59.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+can (21).jpg,results/60.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+can (14).JPG,results/61.jpg,['noSymptoms'],Candidiasis 56,{'Candidiasis': 0.56}
+can (22).jpg,results/62.jpg,['noSymptoms'],Candidiasis 70,{'Candidiasis': 0.7}
+can (21).jpg,results/63.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+can (21).jpg,results/64.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+cann (5).jpg,results/65.jpg,['noSymptoms'],Candidiasis 42,{'Candidiasis': 0.42}
+can (15).JPG,results/66.jpg,['noSymptoms'],Candidiasis 22,"{'Candidiasis': 0.44, 'Ulcer': 0.39}"
+can (4).jpg,results/67.jpg,['noSymptoms'],Candidiasis 42,{'Candidiasis': 0.42}
+can (4).jpg,results/68.jpg,['noSymptoms'],Candidiasis 42,{'Candidiasis': 0.42}
+can (12).jpg,results/69.jpg,['noSymptoms'],Candidiasis 42,{'Candidiasis': 0.42}
+can (14).JPG,results/70.jpg,['noSymptoms'],Candidiasis 56,{'Candidiasis': 0.56}
+can (15).JPG,results/71.jpg,['noSymptoms'],Candidiasis 22,"{'Candidiasis': 0.44, 'Ulcer': 0.39}"
+can (15).JPG,results/72.jpg,['noSymptoms'],Candidiasis 22,"{'Candidiasis': 0.44, 'Ulcer': 0.39}"
+can (40).jpg,results/73.jpg,['noSymptoms'],Candidiasis 58,{'Candidiasis': 0.58}
+can (15).JPG,results/74.jpg,['noSymptoms'],Candidiasis 22,"{'Candidiasis': 0.44, 'Ulcer': 0.39}"
+can (22).jpg,results/75.jpg,['noSymptoms'],Candidiasis 70,{'Candidiasis': 0.7}
+cann (5).jpg,results/76.jpg,['noSymptoms'],Candidiasis 42,{'Candidiasis': 0.42}
+can (8).jpg,results/77.jpg,['noSymptoms'],Candidiasis 25,"{'Candidiasis': 0.5, 'Leukoplakia': 0.38}"
+can (7).jpg,results/78.jpg,['noSymptoms'],Candidiasis 57,{'Candidiasis': 0.57}
+can (7).jpg,results/79.jpg,['noSymptoms'],Candidiasis 57,{'Candidiasis': 0.57}
+cann (4).jpg,results/80.jpg,['noSymptoms'],Lichenplanus 34,{'Lichenplanus': 0.34}
+can (19).jpg,results/81.jpg,['noSymptoms'],Candidiasis 33,{'Candidiasis': 0.33}
+can (13).JPG,results/82.jpg,['noSymptoms'],Candidiasis 53,{'Candidiasis': 0.53}
+can (15).JPG,results/83.jpg,['noSymptoms'],Candidiasis 22,"{'Candidiasis': 0.44, 'Ulcer': 0.39}"
+can (22).jpg,results/84.jpg,['noSymptoms'],Candidiasis 70,{'Candidiasis': 0.7}
+can (22).jpg,results/85.jpg,['noSymptoms'],Candidiasis 70,{'Candidiasis': 0.7}
+can (22).jpg,results/86.jpg,['noSymptoms'],Candidiasis 70,{'Candidiasis': 0.7}
+can (22).jpg,results/87.jpg,['noSymptoms'],Candidiasis 70,{'Candidiasis': 0.7}
+can (14).JPG,results/88.jpg,['noSymptoms'],Candidiasis 56,{'Candidiasis': 0.56}
+can (14).JPG,results/89.jpg,['noSymptoms'],Candidiasis 56,{'Candidiasis': 0.56}
+can (13).JPG,results/90.jpg,"['noSymptoms', 'drinkAlcohol']",Candidiasis 53,{'Candidiasis': 0.53}
+can (20).jpg,results/91.jpg,['noSymptoms'],Candidiasis 39,{'Candidiasis': 0.39}
+can (21).jpg,results/92.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+can (12).jpg,results/93.jpg,['noSymptoms'],Candidiasis 42,{'Candidiasis': 0.42}
+can (14).JPG,results/94.jpg,['noSymptoms'],Candidiasis 56,{'Candidiasis': 0.56}
+can (5).jpg,results/95.jpg,['noSymptoms'],Candidiasis 48,{'Candidiasis': 0.48}
+can (13).JPG,results/96.jpg,['noSymptoms'],Candidiasis 53,{'Candidiasis': 0.53}
+can (15).JPG,results/97.jpg,['noSymptoms'],Candidiasis 22,"{'Candidiasis': 0.44, 'Ulcer': 0.39}"
+can (15).JPG,results/98.jpg,['noSymptoms'],Candidiasis 22,"{'Candidiasis': 0.44, 'Ulcer': 0.39}"
+Oral-cavity-with-precancerous-lesion-of-planum-buccale_Q640.jpg,results/99.jpg,['noSymptoms'],OtherWhite 74,"{'Candidiasis': [0.59], 'OtherWhite': [0.48]}"
+"71MATLF+D4L._AC_UF894,1000_QL80_.jpg",results/100.jpg,['noSymptoms'],  Unpredictable,{}
+Oral-cavity-with-precancerous-lesion-of-planum-buccale_Q640.jpg,results/101.jpg,['noSymptoms'],OtherWhite 74,"{'Candidiasis': [0.59], 'OtherWhite': [0.48]}"
+Oral-cavity-with-precancerous-lesion-of-planum-buccale_Q640.jpg,results/102.jpg,"['drinkAlcohol', 'alwaysHurts']",Candidiasis 29,"{'Candidiasis': 0.59, 'OtherWhite': 0.48}"
+mouth-photo-2.png,results/103.jpg,['alwaysHurts'],Ulcer 70,{'Ulcer': [0.4]}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/104.jpg,['noSymptoms'],  Unpredictable,{}
+IMG_6788_resized.jpg,results/105.jpg,['noSymptoms'],Leukoplakia 47,{'Leukoplakia': 0.47}
+16_9_d662e87653.png,results/106.jpg,['noSymptoms'],  Unpredictable,{}
+2-Figure1-1.png,results/107.jpg,['noSymptoms'],Leukoplakia 54,{'Leukoplakia': 0.54}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/108.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/109.jpg,['noSymptoms'],  Unpredictable,{}
+2-Figure1-1.png,results/110.jpg,['noSymptoms'],Leukoplakia 54,{'Leukoplakia': 0.54}
+v_can_8_resized.jpg,results/111.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/112.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/113.jpg,['noSymptoms'],  Unpredictable,{}
+2-Figure1-1.png,results/114.jpg,['noSymptoms'],Leukoplakia 54,{'Leukoplakia': 0.54}
+precancer-250x250.jpg,results/115.jpg,"['smoking', 'chewBetelNut']",  Unpredictable,{}
+2-Figure1-1.png,results/116.jpg,['noSymptoms'],Leukoplakia 54,{'Leukoplakia': 0.54}
+precancerous-lesions-in-oral-cavity-43-638.jpg,results/117.jpg,"['drinkAlcohol', 'smoking']",Leukoplakia 82,{'Leukoplakia': [0.64]}
+2-Figure1-1.png,results/118.jpg,['noSymptoms'],Leukoplakia 54,{'Leukoplakia': 0.54}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/119.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/120.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/121.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/122.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/123.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/124.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/125.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/126.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/127.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/128.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/129.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/130.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/131.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/132.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/133.jpg,['noSymptoms'],  Unpredictable,{}
+"71MATLF+D4L._AC_UF894,1000_QL80_.jpg",results/134.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/135.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/136.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/137.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/138.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/139.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/140.jpg,['noSymptoms'],  Unpredictable,{}
+"71MATLF+D4L._AC_UF894,1000_QL80_.jpg",results/141.jpg,['noSymptoms'],  Unpredictable,{}
+Oral-cavity-with-precancerous-lesion-of-planum-buccale_Q640.jpg,results/142.jpg,['noSymptoms'],OtherWhite 74,"{'Candidiasis': [0.59], 'OtherWhite': [0.48]}"
+premalignant oral lesions 1.jpg,results/143.jpg,['noSymptoms'],OtherWhite 60,"{'OtherWhite': [0.6, 0.45, 0.3, 0.3]}"
+98c1ef76ef2713258dd356bb911864cd.jpg,results/144.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/145.jpg,['noSymptoms'],  Unpredictable,{}
+unnamed.jpg,results/146.jpg,['noSymptoms'],Leukoplakia 77,{'Leukoplakia': 0.77}
+oooo1983-fig-0003.jpg,results/147.jpg,['noSymptoms'],Leukoplakia 66,{'Leukoplakia': 0.66}
+premalignant oral lesions 2.jpg,results/148.jpg,['noSymptoms'],Leukoplakia 88,{'Leukoplakia': 0.88}
+precancerous-lesions-in-oral-cavity-43-638.jpg,results/149.jpg,['noSymptoms'],Leukoplakia 64,{'Leukoplakia': 0.64}
+unnamed.jpg,results/150.jpg,['noSymptoms'],Leukoplakia 77,{'Leukoplakia': 0.77}
+"71MATLF+D4L._AC_UF894,1000_QL80_.jpg",results/151.jpg,['noSymptoms'],  Unpredictable,{}
+supernumerary-teeth.jpg,results/152.jpg,['drinkAlcohol'],  Unpredictable,{}
+supernumerary-teeth.jpg,results/153.jpg,['drinkAlcohol'],  Unpredictable,{}
+2-Figure1-1.png,results/154.jpg,['noSymptoms'],Leukoplakia 54,{'Leukoplakia': 0.54}
+ZungenCa2a.jpg,results/155.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/156.jpg,['noSymptoms'],  Unpredictable,{}
+"71MATLF+D4L._AC_UF894,1000_QL80_.jpg",results/157.jpg,['noSymptoms'],  Unpredictable,{}
+IMG_6788_resized.jpg,results/158.jpg,['noSymptoms'],Leukoplakia 47,{'Leukoplakia': 0.47}
+a2.jpg,results/159.jpg,['noSymptoms'],Candidiasis 18,"{'Candidiasis': 0.36, 'Lichenplanus': 0.31}"
+2-Figure1-1.png,results/160.jpg,['noSymptoms'],Leukoplakia 54,{'Leukoplakia': 0.54}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/161.jpg,['noSymptoms'],  Unpredictable,{}
+IMG_6788_resized.jpg,results/162.jpg,['noSymptoms'],Leukoplakia 47,{'Leukoplakia': 0.47}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/163.jpg,['noSymptoms'],  Unpredictable,{}
+98c1ef76ef2713258dd356bb911864cd.jpg,results/164.jpg,['noSymptoms'],  Unpredictable,{}
+2-Figure1-1.png,results/165.jpg,['noSymptoms'],Leukoplakia 54,{'Leukoplakia': 0.54}
+2-Figure1-1.png,results/166.jpg,['noSymptoms'],Leukoplakia 54,{'Leukoplakia': 0.54}
+cann (1).jpg,results/167.jpg,['noSymptoms'],Candidiasis 57,{'Candidiasis': 0.57}
+ul (16).jpg,results/168.jpg,['noSymptoms'],Ulcer 41,{'Ulcer': 0.41}
+leu (1).JPG,results/169.jpg,['smoking'],Leukoplakia 79,{'Leukoplakia': [0.58]}
+leu (1).JPG,results/170.jpg,['noSymptoms'],Leukoplakia 58,{'Leukoplakia': 0.58}
+leu (1).JPG,results/171.jpg,['smoking'],Leukoplakia 79,{'Leukoplakia': [0.58]}
+leu (2).JPG,results/172.jpg,['noSymptoms'],Leukoplakia 88,{'Leukoplakia': 0.88}
+leu (3).JPG,results/173.jpg,['noSymptoms'],Leukoplakia 85,{'Leukoplakia': 0.85}
+leu (4).JPG,results/174.jpg,['noSymptoms'],Leukoplakia 80,{'Leukoplakia': 0.8}
+leu (4).JPG,results/175.jpg,['smoking'],Leukoplakia 63,"{'Leukoplakia': [0.87, 0.85, 0.81, 0.8, 0.77, 0.68]}"
+leu (4).JPG,results/176.jpg,['noSymptoms'],Leukoplakia 80,{'Leukoplakia': 0.8}
+leu (4).JPG,results/177.jpg,['smoking'],Leukoplakia 63,"{'Leukoplakia': [0.87, 0.85, 0.81, 0.8, 0.77, 0.68]}"
+leu (5).JPG,results/178.jpg,['noSymptoms'],Leukoplakia 69,{'Leukoplakia': 0.69}
+leu (5).JPG,results/179.jpg,['smoking'],Leukoplakia 73,"{'Leukoplakia': [0.88, 0.7, 0.5]}"
+leu (6).JPG,results/180.jpg,['noSymptoms'],Leukoplakia 77,{'Leukoplakia': 0.77}
+leu (7).JPG,results/181.jpg,['noSymptoms'],Leukoplakia 48,{'Leukoplakia': 0.48}
+leu (8).JPG,results/182.jpg,['noSymptoms'],Leukoplakia 34,{'Leukoplakia': 0.34}
+leu (8).JPG,results/183.jpg,['chewBetelNut'],Leukoplakia 67,"{'Leukoplakia': [0.35, 0.33]}"
+leu (10).jpg,results/184.jpg,['noSymptoms'],  Unpredictable,{}
+leu (11).jpg,results/185.jpg,['noSymptoms'],Leukoplakia 42,{'Leukoplakia': 0.42}
+leu (11).jpg,results/186.jpg,['smoking'],Leukoplakia 71,"{'Leukoplakia': [0.52, 0.31]}"
+leu (12).jpg,results/187.jpg,['noSymptoms'],Leukoplakia 83,{'Leukoplakia': 0.83}
+leu (12).jpg,results/188.jpg,['smoking'],Leukoplakia 91,{'Leukoplakia': [0.83]}
+leu (13).jpg,results/189.jpg,['noSymptoms'],Leukoplakia 58,{'Leukoplakia': 0.58}
+leu (13).jpg,results/190.jpg,['smoking'],Leukoplakia 69,"{'Leukoplakia': [0.77, 0.67, 0.3]}"
+leu (17).jpg,results/191.jpg,['noSymptoms'],Leukoplakia 82,{'Leukoplakia': 0.82}
+leu (17).jpg,results/192.jpg,['smoking'],Leukoplakia 91,"{'Leukoplakia': [0.86, 0.78]}"
+leu (18).jpg,results/193.jpg,['noSymptoms'],OtherWhite 95,"{'OtherWhite': [0.9], 'Candidiasis': [0.77, 0.71, 0.61], 'Leukoplakia': [0.54]}"
+leu (18).jpg,results/194.jpg,['chewBetelNut'],Leukoplakia 77,"{'OtherWhite': [0.9], 'Candidiasis': [0.77, 0.71, 0.61], 'Leukoplakia': [0.54]}"
+leu (19).jpg,results/195.jpg,['noSymptoms'],Leukoplakia 57,{'Leukoplakia': 0.57}
+leu (19).jpg,results/196.jpg,['smoking'],Leukoplakia 61,"{'Leukoplakia': [0.85, 0.74, 0.54, 0.41, 0.31]}"
+leu (20).jpg,results/197.jpg,['noSymptoms'],Leukoplakia 28,"{'Leukoplakia': 0.56, 'Lichenplanus': 0.3}"
+leu (21).jpg,results/198.jpg,['noSymptoms'],Leukoplakia 83,{'Leukoplakia': 0.83}
+leu (21).jpg,results/199.jpg,['smoking'],Leukoplakia 91,{'Leukoplakia': [0.83]}
+leu (13).jpg,results/200.jpg,['noSymptoms'],Leukoplakia 58,{'Leukoplakia': 0.58}
+leu (22).jpg,results/201.jpg,['noSymptoms'],Leukoplakia 63,{'Leukoplakia': 0.63}
+leu (22).jpg,results/202.jpg,['smoking'],Leukoplakia 59,"{'Leukoplakia': [0.89, 0.87, 0.72, 0.58, 0.51, 0.45, 0.42]}"
+leu (23).jpg,results/203.jpg,['noSymptoms'],Leukoplakia 68,{'Leukoplakia': 0.68}
+leu (23).jpg,results/204.jpg,['smoking'],Leukoplakia 64,"{'Leukoplakia': [0.95, 0.9, 0.85, 0.36, 0.32]}"
+leu (24).jpg,results/205.jpg,['noSymptoms'],Leukoplakia 88,{'Leukoplakia': 0.88}
+leu (25).JPG,results/206.jpg,['noSymptoms'],  Unpredictable,{}
+leu (26).JPG,results/207.jpg,['noSymptoms'],OtherWhite 68,"{'Leukoplakia': [0.72, 0.66, 0.42], 'OtherWhite': [0.37]}"
+leu (27).JPG,results/208.jpg,['smoking'],Leukoplakia 85,{'Leukoplakia': [0.7]}
+leu (27).JPG,results/209.jpg,['noSymptoms'],Leukoplakia 70,{'Leukoplakia': 0.7}
+leu (27).JPG,results/210.jpg,['noSymptoms'],Leukoplakia 70,{'Leukoplakia': 0.7}
+leu (28).JPG,results/211.jpg,['noSymptoms'],Leukoplakia 57,{'Leukoplakia': 0.57}
+leu (28).JPG,results/212.jpg,['smoking'],Leukoplakia 78,{'Leukoplakia': [0.57]}
+leu (29).JPG,results/213.jpg,['noSymptoms'],OtherWhite 86,{'OtherWhite': [0.73]}
+leu (29).JPG,results/214.jpg,['noSymptoms'],OtherWhite 86,{'OtherWhite': [0.73]}
+leu (30).JPG,results/215.jpg,['noSymptoms'],Ulcer 15,"{'Ulcer': 0.44, 'Candidiasis': 0.38, 'Leukoplakia': 0.42}"
+leu (31).JPG,results/216.jpg,['noSymptoms'],Leukoplakia 48,{'Leukoplakia': 0.48}
+leu (31).JPG,results/217.jpg,['smoking'],Leukoplakia 74,{'Leukoplakia': [0.48]}
+leu (32).JPG,results/218.jpg,['noSymptoms'],Leukoplakia 72,{'Leukoplakia': 0.72}
+leu (33).JPG,results/219.jpg,['noSymptoms'],Leukoplakia 53,{'Leukoplakia': 0.53}
+leu (34).JPG,results/220.jpg,['noSymptoms'],Leukoplakia 50,{'Leukoplakia': 0.5}
+leu (35).JPG,results/221.jpg,['noSymptoms'],Leukoplakia 61,{'Leukoplakia': 0.61}
+leu (36).JPG,results/222.jpg,['noSymptoms'],Leukoplakia 41,{'Leukoplakia': 0.41}
+leu (37).JPG,results/223.jpg,['noSymptoms'],Leukoplakia 48,{'Leukoplakia': 0.48}
+leu (37).JPG,results/224.jpg,['smoking'],Leukoplakia 60,"{'Leukoplakia': [0.74, 0.52, 0.51, 0.31, 0.3]}"
+leuu (4).JPG,results/225.jpg,['noSymptoms'],Leukoplakia 70,{'Leukoplakia': 0.7}
+leuu (3).JPG,results/226.jpg,['noSymptoms'],Leukoplakia 60,{'Leukoplakia': 0.6}
+leuu (3).JPG,results/227.jpg,['noSymptoms'],Leukoplakia 60,{'Leukoplakia': 0.6}
+leuu (2).JPG,results/228.jpg,['noSymptoms'],Leukoplakia 83,{'Leukoplakia': 0.83}
+leuu (1).JPG,results/229.jpg,['noSymptoms'],Leukoplakia 79,{'Leukoplakia': 0.79}
+leu (40).JPG,results/230.jpg,['noSymptoms'],Leukoplakia 77,{'Leukoplakia': 0.77}
+leu (39).JPG,results/231.jpg,['noSymptoms'],Leukoplakia 82,{'Leukoplakia': 0.82}
+leu (38).JPG,results/232.jpg,['noSymptoms'],Leukoplakia 90,{'Leukoplakia': 0.9}
+li (1).JPG,results/233.jpg,['noSymptoms'],Lichenplanus 56,{'Lichenplanus': 0.56}
+li (1).JPG,results/234.jpg,['eatSpicyFood'],Lichenplanus 61,"{'Lichenplanus': [0.74, 0.69, 0.58, 0.49, 0.3]}"
+li (2).JPG,results/235.jpg,['noSymptoms'],Lichenplanus 64,{'Lichenplanus': 0.64}
+li (2).JPG,results/236.jpg,['eatSpicyFood'],Lichenplanus 71,"{'Lichenplanus': [0.85, 0.69, 0.37]}"
+li (4).JPG,results/237.jpg,['noSymptoms'],Lichenplanus 50,{'Lichenplanus': 0.5}
+li (4).JPG,results/238.jpg,['eatSpicyFood'],Lichenplanus 75,{'Lichenplanus': [0.5]}
+li (5).JPG,results/239.jpg,['noSymptoms'],Lichenplanus 53,{'Lichenplanus': 0.53}
+li (6).JPG,results/240.jpg,['noSymptoms'],Lichenplanus 71,{'Lichenplanus': 0.71}
+li (6).JPG,results/241.jpg,['eatSpicyFood'],Lichenplanus 74,"{'Lichenplanus': [0.75, 0.74, 0.64]}"
+li (7).jpg,results/242.jpg,['noSymptoms'],Lichenplanus 66,{'Lichenplanus': 0.66}
+li (8).jpg,results/243.jpg,['noSymptoms'],Lichenplanus 52,{'Lichenplanus': 0.52}
+li (8).jpg,results/244.jpg,['eatSpicyFood'],Lichenplanus 59,"{'Lichenplanus': [0.73, 0.71, 0.58, 0.44, 0.35, 0.32]}"
+li (9).jpg,results/245.jpg,['noSymptoms'],Lichenplanus 54,{'Lichenplanus': 0.54}
+li (11).jpg,results/246.jpg,['noSymptoms'],Lichenplanus 55,{'Lichenplanus': 0.55}
+li (14).jpg,results/247.jpg,['noSymptoms'],Lichenplanus 71,{'Lichenplanus': 0.71}
+li (14).jpg,results/248.jpg,['eatSpicyFood'],Lichenplanus 74,"{'Lichenplanus': [0.8, 0.72, 0.6]}"
+li (15).jpg,results/249.jpg,['noSymptoms'],Lichenplanus 94,{'Lichenplanus': 0.94}
+li (15).jpg,results/250.jpg,['eatSpicyFood'],Lichenplanus 97,{'Lichenplanus': [0.94]}
+li (16).jpg,results/251.jpg,['noSymptoms'],Lichenplanus 50,{'Lichenplanus': 0.5}
+li (16).jpg,results/252.jpg,['eatSpicyFood'],Lichenplanus 67,"{'Lichenplanus': [0.62, 0.55, 0.33]}"
+li (16).jpg,results/253.jpg,['eatSpicyFood'],Lichenplanus 67,"{'Lichenplanus': [0.62, 0.55, 0.33]}"
+li (17).jpg,results/254.jpg,['noSymptoms'],Lichenplanus 47,{'Lichenplanus': 0.47}
+li (17).jpg,results/255.jpg,['eatSpicyFood'],Lichenplanus 59,"{'Lichenplanus': [0.61, 0.55, 0.45, 0.38, 0.36]}"
+li (18).jpg,results/256.jpg,['eatSpicyFood'],Lichenplanus 74,{'Lichenplanus': [0.48]}
+li (18).jpg,results/257.jpg,['noSymptoms'],Lichenplanus 48,{'Lichenplanus': 0.48}
+li (19).jpg,results/258.jpg,['noSymptoms'],Lichenplanus 77,{'Lichenplanus': 0.77}
+li (20).JPG,results/259.jpg,['noSymptoms'],  Unpredictable,{}
+li (20).JPG,results/260.jpg,['eatSpicyFood'],  Unpredictable,{}
+li (21).JPG,results/261.jpg,['noSymptoms'],  Unpredictable,{}
+li (21).JPG,results/262.jpg,['eatSpicyFood'],  Unpredictable,{}
+li (22).JPG,results/263.jpg,['noSymptoms'],Candidiasis 35,{'Candidiasis': 0.35}
+li (22).JPG,results/264.jpg,['eatSpicyFood'],Candidiasis 35,{'Candidiasis': 0.35}
+li (23).JPG,results/265.jpg,['noSymptoms'],Lichenplanus 35,{'Lichenplanus': 0.35}
+li (23).JPG,results/266.jpg,['eatSpicyFood'],Lichenplanus 67,"{'Lichenplanus': [0.36, 0.34]}"
+li (28).JPG,results/267.jpg,['noSymptoms'],Lichenplanus 41,"{'Lichenplanus': 0.82, 'Leukoplakia': 0.61}"
+li (28).JPG,results/268.jpg,['eatSpicyFood'],Lichenplanus 91,"{'Lichenplanus': [0.82], 'Leukoplakia': [0.61]}"
+li (29).JPG,results/269.jpg,['noSymptoms'],OtherWhite 70,"{'Lichenplanus': [0.58], 'OtherWhite': [0.39]}"
+li (30).JPG,results/270.jpg,['noSymptoms'],Lichenplanus 35,{'Lichenplanus': 0.35}
+li (30).JPG,results/271.jpg,['eatSpicyFood'],Lichenplanus 62,"{'Lichenplanus': [0.41, 0.34, 0.31]}"
+li (32).JPG,results/272.jpg,['noSymptoms'],Ulcer 33,"{'Ulcer': 0.65, 'Lichenplanus': 0.48}"
+li (32).JPG,results/273.jpg,['eatSpicyFood'],Lichenplanus 74,"{'Ulcer': [0.65], 'Lichenplanus': [0.61, 0.35]}"
+li (33).JPG,results/274.jpg,['noSymptoms'],Lichenplanus 49,{'Lichenplanus': 0.49}
+li (33).JPG,results/275.jpg,['eatSpicyFood'],Lichenplanus 74,"{'Lichenplanus': [0.69, 0.3]}"
+lii (10).JPG,results/276.jpg,['noSymptoms'],Lichenplanus 65,{'Lichenplanus': 0.65}
+lii (9).JPG,results/277.jpg,['noSymptoms'],  Unpredictable,{}
+lii (8).JPG,results/278.jpg,['noSymptoms'],Lichenplanus 46,{'Lichenplanus': 0.46}
+lii (7).JPG,results/279.jpg,['noSymptoms'],Lichenplanus 29,"{'Lichenplanus': 0.58, 'Candidiasis': 0.3}"
+lii (6).JPG,results/280.jpg,['noSymptoms'],Lichenplanus 51,{'Lichenplanus': 0.51}
+lii (6).JPG,results/281.jpg,['eatSpicyFood'],Lichenplanus 76,"{'Lichenplanus': [0.67, 0.35]}"
+lii (5).JPG,results/282.jpg,['noSymptoms'],OtherWhite 78,"{'OtherWhite': [0.75, 0.35]}"
+lii (5).JPG,results/283.jpg,['eatSpicyFood'],OtherWhite 55,{'OtherWhite': 0.55}
+lii (4).JPG,results/284.jpg,['noSymptoms'],Lichenplanus 60,{'Lichenplanus': 0.6}
+lii (4).JPG,results/285.jpg,['eatSpicyFood'],Lichenplanus 70,"{'Lichenplanus': [0.71, 0.69, 0.4]}"
+lii (3).JPG,results/286.jpg,['noSymptoms'],Lichenplanus 37,{'Lichenplanus': 0.37}
+lii (3).JPG,results/287.jpg,['eatSpicyFood'],Lichenplanus 68,{'Lichenplanus': [0.37]}
+lii (2).JPG,results/288.jpg,['noSymptoms'],  Unpredictable,{}
+lii (2).JPG,results/289.jpg,['eatSpicyFood'],  Unpredictable,{}
+lii (1).JPG,results/290.jpg,['noSymptoms'],  Unpredictable,{}
+li (40).JPG,results/291.jpg,['noSymptoms'],Lichenplanus 63,{'Lichenplanus': 0.63}
+li (39).JPG,results/292.jpg,['noSymptoms'],  Unpredictable,{}
+li (38).JPG,results/293.jpg,['noSymptoms'],  Unpredictable,{}
+li (36).JPG,results/294.jpg,['noSymptoms'],Lichenplanus 48,{'Lichenplanus': 0.48}
+li (35).JPG,results/295.jpg,['noSymptoms'],Lichenplanus 68,{'Lichenplanus': 0.68}
+li (34).JPG,results/296.jpg,['noSymptoms'],Lichenplanus 47,{'Lichenplanus': 0.47}
+can (1).jpg,results/297.jpg,['wipeOff'],Candidiasis 57,"{'Candidiasis': [0.43, 0.33, 0.32, 0.32, 0.3]}"
+can (1).jpg,results/298.jpg,['noSymptoms'],Candidiasis 34,{'Candidiasis': 0.34}
+can (4).jpg,results/299.jpg,['noSymptoms'],Candidiasis 42,{'Candidiasis': 0.42}
+can (4).jpg,results/300.jpg,['wipeOff'],Candidiasis 58,"{'Candidiasis': [0.66, 0.5, 0.34, 0.32, 0.3]}"
+can (5).jpg,results/301.jpg,['noSymptoms'],Candidiasis 48,{'Candidiasis': 0.48}
+can (5).jpg,results/302.jpg,['wipeOff'],Candidiasis 66,"{'Candidiasis': [0.57, 0.53, 0.33]}"
+can (6).jpg,results/303.jpg,['noSymptoms'],Leukoplakia 39,{'Leukoplakia': 0.39}
+can (6).jpg,results/304.jpg,['wipeOff'],Leukoplakia 39,{'Leukoplakia': 0.39}
+can (6).jpg,results/305.jpg,['noSymptoms'],Leukoplakia 39,{'Leukoplakia': 0.39}
+can (7).jpg,results/306.jpg,['noSymptoms'],Candidiasis 57,{'Candidiasis': 0.57}
+can (7).jpg,results/307.jpg,['wipeOff'],Candidiasis 78,"{'Candidiasis': [0.68, 0.46]}"
+can (9).jpg,results/308.jpg,['noSymptoms'],Candidiasis 46,{'Candidiasis': 0.46}
+can (8).jpg,results/309.jpg,['wipeOff'],Candidiasis 75,"{'Candidiasis': [0.5], 'Leukoplakia': [0.38]}"
+can (9).jpg,results/310.jpg,['noSymptoms'],Candidiasis 46,{'Candidiasis': 0.46}
+can (9).jpg,results/311.jpg,['wipeOff'],Candidiasis 56,"{'Candidiasis': [0.61, 0.56, 0.54, 0.46, 0.44, 0.42, 0.35, 0.31]}"
+can (9).jpg,results/312.jpg,['wipeOff'],Candidiasis 56,"{'Candidiasis': [0.61, 0.56, 0.54, 0.46, 0.44, 0.42, 0.35, 0.31]}"
+can (10).jpg,results/313.jpg,['noSymptoms'],Candidiasis 56,{'Candidiasis': 0.56}
+can (10).jpg,results/314.jpg,['wipeOff'],Candidiasis 52,"{'Candidiasis': [0.84, 0.79, 0.77, 0.75, 0.72, 0.72, 0.7, 0.7, 0.69, 0.67, 0.61, 0.59, 0.56, 0.49, 0.44, 0.39, 0.38, 0.38, 0.36, 0.34, 0.34, 0.3, 0.3]}"
+can (11).jpg,results/315.jpg,['noSymptoms'],Candidiasis 38,{'Candidiasis': 0.38}
+can (11).jpg,results/316.jpg,['wipeOff'],Candidiasis 56,"{'Candidiasis': [0.45, 0.41, 0.41, 0.39, 0.33, 0.3]}"
+can (12).jpg,results/317.jpg,['noSymptoms'],Candidiasis 42,{'Candidiasis': 0.42}
+can (12).jpg,results/318.jpg,['wipeOff'],Candidiasis 54,"{'Candidiasis': [0.61, 0.56, 0.47, 0.45, 0.39, 0.38, 0.37, 0.36, 0.32, 0.31]}"
+can (13).JPG,results/319.jpg,['noSymptoms'],Candidiasis 53,{'Candidiasis': 0.53}
+can (13).JPG,results/320.jpg,['wipeOff'],Candidiasis 52,"{'Candidiasis': [0.78, 0.74, 0.73, 0.7, 0.69, 0.65, 0.6, 0.58, 0.58, 0.57, 0.57, 0.56, 0.56, 0.55, 0.53, 0.48, 0.42, 0.42, 0.37, 0.36, 0.35, 0.34, 0.33, 0.3]}"
+can (13).JPG,results/321.jpg,['noSymptoms'],Candidiasis 53,{'Candidiasis': 0.53}
+can (13).JPG,results/322.jpg,['noSymptoms'],Candidiasis 53,{'Candidiasis': 0.53}
+can (13).JPG,results/323.jpg,['wipeOff'],Candidiasis 52,"{'Candidiasis': [0.78, 0.74, 0.73, 0.7, 0.69, 0.65, 0.6, 0.58, 0.58, 0.57, 0.57, 0.56, 0.56, 0.55, 0.53, 0.48, 0.42, 0.42, 0.37, 0.36, 0.35, 0.34, 0.33, 0.3]}"
+can (14).JPG,results/324.jpg,['noSymptoms'],Candidiasis 56,{'Candidiasis': 0.56}
+can (14).JPG,results/325.jpg,['wipeOff'],Candidiasis 53,"{'Candidiasis': [0.81, 0.8, 0.71, 0.69, 0.66, 0.65, 0.59, 0.57, 0.57, 0.55, 0.54, 0.52, 0.52, 0.5, 0.5, 0.48, 0.4, 0.4, 0.34, 0.31]}"
+can (15).JPG,results/326.jpg,['noSymptoms'],Candidiasis 22,"{'Candidiasis': 0.44, 'Ulcer': 0.39}"
+can (15).JPG,results/327.jpg,['wipeOff'],Candidiasis 55,"{'Candidiasis': [0.7, 0.49, 0.47, 0.45, 0.41, 0.38, 0.38, 0.33, 0.31], 'Ulcer': [0.39]}"
+can (16).JPG,results/328.jpg,['noSymptoms'],Candidiasis 55,{'Candidiasis': 0.55}
+can (16).JPG,results/329.jpg,['wipeOff'],Candidiasis 55,"{'Candidiasis': [0.72, 0.71, 0.67, 0.66, 0.58, 0.54, 0.5, 0.48, 0.46, 0.38, 0.37]}"
+can (19).jpg,results/330.jpg,['noSymptoms'],Candidiasis 33,{'Candidiasis': 0.33}
+can (19).jpg,results/331.jpg,['wipeOff'],Candidiasis 67,{'Candidiasis': [0.33]}
+can (20).jpg,results/332.jpg,['noSymptoms'],Candidiasis 39,{'Candidiasis': 0.39}
+can (20).jpg,results/333.jpg,['wipeOff'],Candidiasis 55,"{'Candidiasis': [0.59, 0.5, 0.43, 0.35, 0.33, 0.32, 0.32, 0.31]}"
+can (21).jpg,results/334.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+can (21).jpg,results/335.jpg,['wipeOff'],Candidiasis 57,"{'Candidiasis': [0.91, 0.81, 0.79, 0.77, 0.67, 0.63, 0.57, 0.57, 0.55, 0.35]}"
+can (22).jpg,results/336.jpg,['noSymptoms'],Candidiasis 70,{'Candidiasis': 0.7}
+can (22).jpg,results/337.jpg,['wipeOff'],Candidiasis 67,"{'Candidiasis': [0.82, 0.73, 0.64, 0.63]}"
+can (23).jpg,results/338.jpg,['noSymptoms'],Candidiasis 59,{'Candidiasis': 0.59}
+can (23).jpg,results/339.jpg,['wipeOff'],Candidiasis 57,"{'Candidiasis': [0.83, 0.76, 0.76, 0.69, 0.59, 0.36, 0.35, 0.35]}"
+can (24).jpg,results/340.jpg,['noSymptoms'],Candidiasis 72,{'Candidiasis': 0.72}
+can (24).jpg,results/341.jpg,['wipeOff'],Candidiasis 64,"{'Candidiasis': [0.82, 0.78, 0.7, 0.69, 0.62]}"
+can (26).jpg,results/342.jpg,['noSymptoms'],Candidiasis 58,{'Candidiasis': 0.58}
+can (26).jpg,results/343.jpg,['wipeOff'],Candidiasis 57,"{'Candidiasis': [0.76, 0.74, 0.72, 0.62, 0.59, 0.53, 0.37, 0.3]}"
+can (27).jpg,results/344.jpg,['noSymptoms'],Candidiasis 57,{'Candidiasis': 0.57}
+can (27).jpg,results/345.jpg,['wipeOff'],Candidiasis 56,"{'Candidiasis': [0.83, 0.74, 0.73, 0.62, 0.57, 0.52, 0.47, 0.36, 0.31]}"
+can (28).jpg,results/346.jpg,['noSymptoms'],Candidiasis 53,{'Candidiasis': 0.53}
+can (28).jpg,results/347.jpg,['wipeOff'],Candidiasis 53,"{'Candidiasis': [0.82, 0.79, 0.73, 0.7, 0.67, 0.62, 0.59, 0.55, 0.45, 0.43, 0.42, 0.39, 0.39, 0.35, 0.34, 0.31]}"
+can (29).jpg,results/348.jpg,['noSymptoms'],Candidiasis 45,{'Candidiasis': 0.45}
+can (29).jpg,results/349.jpg,['wipeOff'],Candidiasis 52,"{'Candidiasis': [0.65, 0.61, 0.57, 0.57, 0.56, 0.56, 0.56, 0.53, 0.52, 0.49, 0.46, 0.44, 0.42, 0.42, 0.41, 0.4, 0.37, 0.37, 0.37, 0.35, 0.34, 0.32, 0.31, 0.3]}"
+can (30).jpg,results/350.jpg,['noSymptoms'],Candidiasis 51,{'Candidiasis': 0.51}
+can (30).jpg,results/351.jpg,['wipeOff'],Candidiasis 55,"{'Candidiasis': [0.78, 0.67, 0.63, 0.56, 0.52, 0.51, 0.46, 0.41, 0.4, 0.35, 0.3]}"
+can (31).jpg,results/352.jpg,['noSymptoms'],Candidiasis 70,{'Candidiasis': 0.7}
+can (31).jpg,results/353.jpg,['wipeOff'],Candidiasis 60,"{'Candidiasis': [0.88, 0.86, 0.82, 0.78, 0.63, 0.52, 0.41]}"
+can (32).jpg,results/354.jpg,['noSymptoms'],Candidiasis 65,{'Candidiasis': 0.65}
+can (32).jpg,results/355.jpg,['wipeOff'],Candidiasis 61,"{'Candidiasis': [0.86, 0.81, 0.72, 0.51, 0.51, 0.48]}"
+can (33).jpg,results/356.jpg,['noSymptoms'],Candidiasis 59,{'Candidiasis': 0.59}
+can (33).jpg,results/357.jpg,['wipeOff'],Candidiasis 58,"{'Candidiasis': [0.85, 0.7, 0.65, 0.63, 0.54, 0.39, 0.34]}"
+can (34).jpg,results/358.jpg,['noSymptoms'],Candidiasis 54,{'Candidiasis': 0.54}
+can (34).jpg,results/359.jpg,['wipeOff'],Candidiasis 64,"{'Candidiasis': [0.81, 0.6, 0.41, 0.32]}"
+can (35).jpg,results/360.jpg,['wipeOff'],Candidiasis 68,"{'Candidiasis': [0.7, 0.5, 0.46]}"
+can (40).jpg,results/361.jpg,['wipeOff'],Candidiasis 56,"{'Candidiasis': [0.77, 0.69, 0.67, 0.65, 0.62, 0.56, 0.55, 0.5, 0.49, 0.3]}"
+can (39).jpg,results/362.jpg,['wipeOff'],Candidiasis 56,"{'Candidiasis': [0.93, 0.8, 0.74, 0.73, 0.62, 0.59, 0.55, 0.54, 0.45, 0.41]}"
+can (38).jpg,results/363.jpg,['wipeOff'],Candidiasis 57,"{'Candidiasis': [0.87, 0.86, 0.81, 0.74, 0.63, 0.6, 0.52, 0.42, 0.37]}"
+can (36).jpg,results/364.jpg,['wipeOff'],Candidiasis 58,"{'Candidiasis': [0.75, 0.69, 0.64, 0.62, 0.59, 0.47, 0.4]}"
+ot (9).JPG,results/365.jpg,"['noSymptoms', 'chewBetelNut']",OtherWhite 97,{'OtherWhite': [0.94]}
+ot (9).JPG,results/366.jpg,['chewBetelNut'],OtherWhite 94,{'OtherWhite': 0.94}
+ot (1).jpg,results/367.jpg,['noSymptoms'],Leukoplakia 91,{'Leukoplakia': 0.91}
+ot (2).jpg,results/368.jpg,['noSymptoms'],OtherWhite 91,{'OtherWhite': [0.81]}
+ot (3).JPG,results/369.jpg,['noSymptoms'],OtherWhite 95,{'OtherWhite': [0.89]}
+ot (4).JPG,results/370.jpg,['noSymptoms'],OtherWhite 89,{'OtherWhite': [0.78]}
+ot (5).JPG,results/371.jpg,['noSymptoms'],OtherWhite 70,{'OtherWhite': [0.4]}
+ot (8).JPG,results/372.jpg,['noSymptoms'],Candidiasis 38,"{'Candidiasis': 0.75, 'Leukoplakia': 0.61}"
+ot (9).JPG,results/373.jpg,"['noSymptoms', 'chewBetelNut']",OtherWhite 97,{'OtherWhite': [0.94]}
+ot (10).JPG,results/374.jpg,"['noSymptoms', 'chewBetelNut']",OtherWhite 96,{'OtherWhite': [0.92]}
+ot (11).JPG,results/375.jpg,['noSymptoms'],OtherWhite 79,"{'OtherWhite': [0.81, 0.36]}"
+ot (12).JPG,results/376.jpg,['noSymptoms'],OtherWhite 91,{'OtherWhite': [0.81]}
+ot (13).jpg,results/377.jpg,['noSymptoms'],OtherWhite 74,"{'OtherWhite': [0.56, 0.39]}"
+ot (15).jpg,results/378.jpg,['noSymptoms'],OtherWhite 84,"{'OtherWhite': [0.77, 0.58]}"
+ot (15).jpg,results/379.jpg,['noSymptoms'],OtherWhite 84,"{'OtherWhite': [0.77, 0.58]}"
+ot (16).jpg,results/380.jpg,['noSymptoms'],OtherWhite 68,"{'OtherWhite': [0.7, 0.47, 0.43]}"
+ot (21).jpg,results/381.jpg,['noSymptoms'],OtherWhite 77,{'OtherWhite': [0.53]}
+ot (22).jpg,results/382.jpg,['noSymptoms'],OtherWhite 74,{'OtherWhite': [0.49]}
+ot (23).jpg,results/383.jpg,['noSymptoms'],OtherWhite 86,{'OtherWhite': [0.73]}
+ot (24).jpg,results/384.jpg,['noSymptoms'],OtherWhite 61,"{'OtherWhite': [0.72, 0.43, 0.37, 0.3]}"
+ot (25).jpg,results/385.jpg,['noSymptoms'],OtherWhite 95,{'OtherWhite': [0.9]}
+ot (26).jpg,results/386.jpg,['noSymptoms'],OtherWhite 97,{'OtherWhite': [0.95]}
+ot (27).jpg,results/387.jpg,['noSymptoms'],OtherWhite 97,{'OtherWhite': [0.94]}
+ot (28).jpg,results/388.jpg,['noSymptoms'],OtherWhite 97,{'OtherWhite': [0.94]}
+ot (29).jpg,results/389.jpg,['noSymptoms'],OtherWhite 93,{'OtherWhite': [0.87]}
+ot (30).jpg,results/390.jpg,['noSymptoms'],OtherWhite 81,"{'OtherWhite': [0.88, 0.36]}"
+ot (31).jpg,results/391.jpg,['noSymptoms'],OtherWhite 91,{'OtherWhite': [0.83]}
+ot (32).jpg,results/392.jpg,['noSymptoms'],OtherWhite 90,{'OtherWhite': [0.8]}
+ot (33).jpg,results/393.jpg,['noSymptoms'],OtherWhite 91,{'OtherWhite': [0.81]}
+ot (34).jpg,results/394.jpg,['noSymptoms'],OtherWhite 90,{'OtherWhite': [0.8]}
+ot (35).jpg,results/395.jpg,"['noSymptoms', 'smoking']",OtherWhite 95,{'OtherWhite': [0.9]}
+ot (36).jpg,results/396.jpg,"['noSymptoms', 'smoking']",OtherWhite 96,{'OtherWhite': [0.92]}
+ot (37).jpg,results/397.jpg,['alwaysHurts'],  Unpredictable,{}
+ot (38).jpg,results/398.jpg,['alwaysHurts'],  Unpredictable,{}
+ot (39).JPG,results/399.jpg,['noSymptoms'],OtherWhite 74,{'OtherWhite': [0.49]}
+ot (40).JPG,results/400.jpg,['noSymptoms'],OtherWhite 75,{'OtherWhite': [0.5]}
+ott (1).JPG,results/401.jpg,['noSymptoms'],Leukoplakia 44,{'Leukoplakia': 0.44}
+ott (2).JPG,results/402.jpg,['noSymptoms'],OtherWhite 91,{'OtherWhite': [0.83]}
+ott (3).JPG,results/403.jpg,['noSymptoms'],OtherWhite 91,{'OtherWhite': [0.82]}
+ott (4).JPG,results/404.jpg,['noSymptoms'],  Unpredictable,{}
+ott (5).JPG,results/405.jpg,['noSymptoms'],OtherWhite 67,{'OtherWhite': [0.34]}
+ott (6).JPG,results/406.jpg,['noSymptoms'],OtherWhite 85,{'OtherWhite': [0.7]}
+ott (7).JPG,results/407.jpg,['noSymptoms'],OtherWhite 87,{'OtherWhite': [0.74]}
+ott (8).JPG,results/408.jpg,['noSymptoms'],OtherWhite 85,{'OtherWhite': [0.71]}
+ul (1).JPG,results/409.jpg,['alwaysHurts'],Ulcer 97,{'Ulcer': [0.93]}
+ul (2).JPG,results/410.jpg,['alwaysHurts'],Ulcer 95,{'Ulcer': [0.89]}
+ul (3).JPG,results/411.jpg,['noSymptoms'],Ulcer 66,{'Ulcer': 0.66}
+ul (4).jpg,results/412.jpg,['alwaysHurts'],Ulcer 74,{'Ulcer': [0.49]}
+ul (5).JPG,results/413.jpg,['alwaysHurts'],Ulcer 67,{'Ulcer': [0.34]}
+ul (6).jpg,results/414.jpg,['alwaysHurts'],Ulcer 93,"{'Ulcer': [0.88, 0.85]}"
+ul (7).jpg,results/415.jpg,['alwaysHurts'],Ulcer 87,{'Ulcer': [0.74]}
+ul (7).jpg,results/416.jpg,['alwaysHurts'],Ulcer 87,{'Ulcer': [0.74]}
+ul (8).jpg,results/417.jpg,['alwaysHurts'],Ulcer 91,{'Ulcer': [0.83]}
+ul (9).jpg,results/418.jpg,['alwaysHurts'],Ulcer 91,{'Ulcer': [0.83]}
+ul (10).jpg,results/419.jpg,['alwaysHurts'],Ulcer 78,"{'Ulcer': [0.82, 0.31]}"
+ul (11).jpg,results/420.jpg,['alwaysHurts'],Ulcer 90,{'Ulcer': [0.79]}
+ul (12).jpg,results/421.jpg,['alwaysHurts'],Ulcer 92,{'Ulcer': [0.84]}
+ul (13).jpg,results/422.jpg,['alwaysHurts'],Ulcer 88,{'Ulcer': [0.75]}
+ul (14).jpg,results/423.jpg,['noSymptoms'],Ulcer 82,{'Ulcer': 0.82}
+ul (15).jpg,results/424.jpg,['noSymptoms'],Ulcer 41,{'Ulcer': 0.41}
+ul (16).jpg,results/425.jpg,['noSymptoms'],Ulcer 41,{'Ulcer': 0.41}
+ul (17).jpg,results/426.jpg,['alwaysHurts'],Ulcer 86,{'Ulcer': [0.72]}
+ul (18).jpg,results/427.jpg,['alwaysHurts'],Ulcer 59,"{'Ulcer': [0.81, 0.7, 0.67, 0.51, 0.4, 0.35]}"
+ul (19).jpg,results/428.jpg,['alwaysHurts'],Ulcer 59,"{'Ulcer': [0.59, 0.51, 0.4, 0.38, 0.36]}"
+ul (20).jpg,results/429.jpg,['alwaysHurts'],Ulcer 59,"{'Ulcer': [0.96, 0.86, 0.82, 0.8, 0.61, 0.56, 0.44, 0.4]}"
+ul (21).jpg,results/430.jpg,['alwaysHurts'],Ulcer 64,"{'Ulcer': [0.74, 0.55, 0.5, 0.4]}"
+ul (22).JPG,results/431.jpg,['alwaysHurts'],Ulcer 58,"{'Ulcer': [0.78, 0.75, 0.73, 0.7, 0.39, 0.33, 0.33]}"
+ul (24).JPG,results/432.jpg,['alwaysHurts'],Ulcer 61,"{'Ulcer': [0.33, 0.33, 0.33]}"
+ul (26).JPG,results/433.jpg,['alwaysHurts'],Ulcer 95,{'Ulcer': [0.89]}
+ul (27).JPG,results/434.jpg,['noSymptoms'],Ulcer 84,{'Ulcer': 0.84}
+ul (28).JPG,results/435.jpg,['alwaysHurts'],Ulcer 64,"{'Ulcer': [0.69, 0.68, 0.54, 0.34]}"
+ul (29).JPG,results/436.jpg,['alwaysHurts'],Ulcer 93,"{'Ulcer': [0.87], 'Candidiasis': [0.4]}"
+ul (30).JPG,results/437.jpg,['alwaysHurts'],Ulcer 70,"{'Ulcer': [0.52, 0.3]}"
+ul (33).JPG,results/438.jpg,['alwaysHurts'],Ulcer 64,"{'Ulcer': [0.86, 0.68, 0.43, 0.31]}"
+ul (34).JPG,results/439.jpg,['alwaysHurts'],Ulcer 95,{'Ulcer': [0.89]}
+ul (35).JPG,results/440.jpg,['alwaysHurts'],Ulcer 94,{'Ulcer': [0.88]}
+ul (36).JPG,results/441.jpg,"['chewBetelNut', 'alwaysHurts']",  Unpredictable,{}
+ul (37).JPG,results/442.jpg,['alwaysHurts'],Ulcer 76,{'Ulcer': [0.52]}
+ul (38).JPG,results/443.jpg,['alwaysHurts'],Ulcer 96,"{'Ulcer': [0.95, 0.89]}"
+ul (39).JPG,results/444.jpg,['alwaysHurts'],Ulcer 77,"{'Ulcer': [0.93, 0.88, 0.63]}"
+ull (1).jpg,results/445.jpg,['alwaysHurts'],Ulcer 80,"{'Ulcer': [0.93, 0.9, 0.88]}"
+ull (2).jpg,results/446.jpg,['alwaysHurts'],Ulcer 90,"{'Ulcer': [0.89, 0.68]}"
+ull (3).jpg,results/447.jpg,['alwaysHurts'],Ulcer 90,{'Ulcer': [0.79]}
+ull (4).jpg,results/448.jpg,['alwaysHurts'],Ulcer 93,{'Ulcer': [0.86]}
+ull (5).jpg,results/449.jpg,['alwaysHurts'],Ulcer 95,{'Ulcer': [0.89]}
+li (29).JPG,results/450.jpg,['noSymptoms'],OtherWhite 70,"{'Lichenplanus': [0.58], 'OtherWhite': [0.39]}"
+cann (6).JPG,results/451.jpg,['wipeOff'],Candidiasis 66,"{'Candidiasis': [0.57, 0.45, 0.38]}"
+can (1).jpg,results/452.jpg,['wipeOff'],Candidiasis 57,"{'Candidiasis': [0.43, 0.33, 0.32, 0.32, 0.3]}"
+ul (7).jpg,results/1.jpg,['noSymptoms'],Ulcer 74,{'Ulcer': 0.74}
+ul (7).txt,results/2.jpg,['noSymptoms'],  Unpredictable,{}
+ul (7).txt,results/2.jpg,['noSymptoms'],  Unpredictable,{}
+ul (4).jpg,results/2.jpg,['noSymptoms'],Ulcer 49,{'Ulcer': 0.49}
+ul (7).jpg,results/3.jpg,['noSymptoms'],Ulcer 74,{'Ulcer': 0.74}
+ul (1).JPG,results/4.jpg,['noSymptoms'],Ulcer 93,{'Ulcer': 0.93}
+RPReplay_Final1730448158.mov,results/5.jpg,['noSymptoms'],  Unpredictable,{}
+IMG_6788_resized.jpg,results/5.jpg,['noSymptoms'],Leukoplakia 47,{'Leukoplakia': 0.47}
+v_can_8_resized.jpg,results/6.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+111111-removebg-preview.png,results/7.jpg,['noSymptoms'],  Unpredictable,{}
+v_can_8_resized.jpg,results/8.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+IMG_6788_resized.jpg,results/9.jpg,['noSymptoms'],Leukoplakia 47,{'Leukoplakia': 0.47}
+v_can_8_resized.jpg,results/10.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/11.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/12.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/13.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/14.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/15.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/16.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/17.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/18.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/19.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/20.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/21.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/22.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+IMG_6788_resized.jpg,results/23.jpg,['noSymptoms'],Leukoplakia 47,{'Leukoplakia': 0.47}
+IMG_6788_resized.jpg,results/24.jpg,['noSymptoms'],Leukoplakia 47,{'Leukoplakia': 0.47}
+v_can_8_resized.jpg,results/25.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/26.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/27.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/28.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/29.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/30.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+IMG_6788_resized.jpg,results/31.jpg,['noSymptoms'],Leukoplakia 47,{'Leukoplakia': 0.47}
+v_can_8_resized.jpg,results/32.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/33.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/34.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/35.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
+v_can_8_resized.jpg,results/36.jpg,['noSymptoms'],Candidiasis 66,{'Candidiasis': 0.66}
