@@ -1,36 +1,36 @@
 import React from 'react';
 import { Cpu, Clock } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function ModelSelector({ selectedModel, setSelectedModel }) {
+  const { t } = useLanguage();
+
   const models = [
     {
       id: 'yolov7',
-      tag: 'การตรวจจับ (Detection)',
+      tag: t('dashboard.modelYOLO'),
       tagType: 'slate',
       title: 'YOLOv7',
-      description:
-        'โมเดลตรวจจับวัตถุสถาปัตยกรรม YOLOv7 ระบุตำแหน่งและตีกรอบ Bounding Box ของรอยโรคในภาพ',
-      output: 'ผลลัพธ์: ตรวจจับรอยโรคและตีกรอบ Bounding Box',
+      description: t('models.yolo7desc'),
+      output: t('models.detectOutput'),
       requiresHistory: false,
     },
     {
       id: 'yolov8',
-      tag: 'การตรวจจับ (Detection)',
+      tag: t('dashboard.modelYOLO'),
       tagType: 'blue',
       title: 'YOLOv8',
-      description:
-        'โมเดลตรวจจับวัตถุสถาปัตยกรรม YOLOv8 ระบุตำแหน่งและตีกรอบ Bounding Box ของรอยโรคในภาพ',
-      output: 'ผลลัพธ์: ตรวจจับรอยโรคและตีกรอบ Bounding Box',
+      description: t('models.yolo8desc'),
+      output: t('models.detectOutput'),
       requiresHistory: false,
     },
     {
       id: 'densenet-bert',
-      tag: 'มัลติโมดอล (Multimodal)',
+      tag: t('dashboard.modelMulti'),
       tagType: 'purple',
       title: 'DenseNet + WangchanBERTa',
-      description:
-        'ผสานคุณลักษณะภาพจาก DenseNet เข้ากับข้อความประวัติทางคลินิกที่แปลงด้วย WangchanBERTa เพื่อวินิจฉัยจำแนกโรคแบบองค์รวม',
-      output: 'ผลลัพธ์: การวินิจฉัยจำแนกโรค (Classification)',
+      description: t('models.densedesc'),
+      output: t('models.classOutput'),
       requiresHistory: true,
     },
   ];
@@ -48,8 +48,8 @@ export default function ModelSelector({ selectedModel, setSelectedModel }) {
             <Cpu className="w-4 h-4" />
           </div>
           <div>
-            <h2 className="text-sm font-semibold text-slate-900 leading-tight">เลือกโมเดล AI</h2>
-            <p className="text-xs text-slate-400 mt-0.5">เลือกสถาปัตยกรรมสำหรับการวิเคราะห์</p>
+            <h2 className="text-sm font-semibold text-slate-900 leading-tight">{t('dashboard.modelTitle')}</h2>
+            <p className="text-xs text-slate-400 mt-0.5">{t('dashboard.modelSubtitle')}</p>
           </div>
         </div>
 
@@ -113,13 +113,13 @@ export default function ModelSelector({ selectedModel, setSelectedModel }) {
               <div className="mt-5 pt-3 border-t border-slate-100">
                 <div className="text-[11px] text-slate-500">
                   <span className="font-medium text-slate-600">{model.output.split(':')[0]}:</span>
-                  <span className="ml-1 text-slate-500">{model.output.split(':')[1]}</span>
+                  <span className="ml-1 text-slate-500">{model.output.split(':')[1] || model.output}</span>
                 </div>
 
                 {model.requiresHistory && (
                   <div className="mt-1.5 flex items-center gap-1 text-[11px] text-slate-500">
                     <Clock className="w-3 h-3 text-slate-400" />
-                    <span>สามารถกรอกประวัติอาการผู้ป่วยเพื่อเพิ่มความแม่นยำในการประเมิน</span>
+                    <span>{t('models.historyTip')}</span>
                   </div>
                 )}
               </div>
