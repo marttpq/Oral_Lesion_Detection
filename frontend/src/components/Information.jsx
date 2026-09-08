@@ -30,9 +30,9 @@ export default function Information() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 w-full">
                 {diseases.map((disease) => (
-                    <div key={disease.title} className="bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow flex flex-col group">
+                    <div key={disease.id} className="bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow flex flex-col group cursor-pointer">
                         <div className="w-full h-48 sm:h-52 bg-slate-100 relative overflow-hidden border-b border-slate-100">
-                            <img src={`https://placehold.co/600x400/f8fafc/475569?text=${encodeURIComponent(disease.title.substring(0, 6))}...`} alt={disease.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                            <img src={disease.imgUrl} alt={disease.title} className="w-full h-full object-cover blur-md group-hover:blur-0 group-hover:scale-105 transition-all duration-500 opacity-90 group-hover:opacity-100" />
                         </div>
                         <div className="p-5 sm:p-6 flex flex-col flex-1">
                             <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mb-1">

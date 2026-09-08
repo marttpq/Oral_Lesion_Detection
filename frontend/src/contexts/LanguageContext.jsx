@@ -36,27 +36,28 @@ export const translations = {
             diseases: [
                 {
                     id: "ulcers", title: "แผลร้อนใน (Aphthous Ulcers)",
+                    imgUrl: "/Ulcer.jpg",
                     description: "รู้จักกันทั่วไปว่าแผลร้อนใน เป็นรอยโรคตื้นๆ ขนาดเล็กที่เกิดบนเนื้อเยื่ออ่อนในช่องปากหรือบริเวณเหงือก มีอาการเจ็บ ทำให้กินและพูดลำบาก"
                 },
                 {
                     id: "candidiasis", title: "เชื้อราในช่องปาก (Candidiasis)",
+                    imgUrl: "/Oral_candidiasis.png",
                     description: "การติดเชื้อรา (Candida) ที่เกิดบนเยื่อบุช่องปาก มักปรากฏเป็นฝ้าขาวหรือรอยโรคบริเวณลิ้นหรือกระพุ้งแก้มด้านใน"
                 },
                 {
                     id: "leukoplakia", title: "รอยโรคฝ้าขาว (Leukoplakia)",
+                    imgUrl: "/Leukoplakia.jpg",
                     description: "แผ่นฝ้าขาวสีขุ่นที่ก่อตัวบริเวณเหงือก กระพุ้งแก้มด้านใน พื้นปาก หรือบางครั้งบนลิ้น ข้อสังเกตคือขูดไม่ออก ถือเป็นภาวะความเสี่ยงก่อนเป็นมะเร็ง"
                 },
                 {
                     id: "lichen-planus", title: "ไลเคน พลานัส (Oral Lichen Planus)",
+                    imgUrl: "/Oral_Lichen_Planus.jpg",
                     description: "ภาวะอักเสบเรื้อรังที่ส่งผลกระทบต่อเยื่อบุในช่องปาก อาจปรากฏเป็นรอยเส้นสีขาวคล้ายร่างแห บางครั้งอาจมีแผลเจ็บร่วมด้วย"
                 },
                 {
-                    id: "scc", title: "มะเร็งเซลล์สความัส (SCC)",
-                    description: "รูปแบบมะเร็งช่องปากที่พบบ่อยที่สุด มักปรากฏเป็นแผลเรื้อรังที่ไม่หาย ก้อนเนื้อ หรือฝ้าหนา การตรวจพบแต่เนิ่นๆ ข่วยเพิ่มอัตราการรอดชีวิต"
-                },
-                {
-                    id: "herpes", title: "เริม (Herpes Simplex)",
-                    description: "การติดเชื้อไวรัสที่แสดงอาการเป็นตุ่มน้ำใสเจ็บปวด มักเกิดบนหรือรอบริมฝีปาก แต่บางครั้งอาจเกิดขึ้นในช่องปาก มักเกิดเป็นกลุ่มก้อน"
+                    id: "linea-alba", title: "รอยเส้นขาว (Linea alba buccalis)",
+                    imgUrl: "/Linea alba buccalis.jpg",
+                    description: "รอยเส้นสีขาวตามแนวนอนบนกระพุ้งแก้มด้านใน มักเกิดจากการเสียดสีของฟันหรือการกัดกระพุ้งแก้ม"
                 }
             ]
         },
@@ -187,27 +188,28 @@ export const translations = {
             diseases: [
                 {
                     id: "ulcers", title: "Aphthous Ulcers",
+                    imgUrl: "/Ulcer.jpg",
                     description: "Commonly known as canker sores. These are small, shallow lesions developing on soft tissues. Painful, making eating and tracking difficult."
                 },
                 {
                     id: "candidiasis", title: "Oral Candidiasis",
+                    imgUrl: "/Oral_candidiasis.png",
                     description: "Fungal infection caused by yeast (Candida) developing on mucous membranes. Shows as white patches."
                 },
                 {
                     id: "leukoplakia", title: "Leukoplakia",
+                    imgUrl: "/Leukoplakia.jpg",
                     description: "Thick white patches that cannot be scraped off, formed on gums or insides of cheeks. Potentially malignant."
                 },
                 {
                     id: "lichen-planus", title: "Oral Lichen Planus",
+                    imgUrl: "/Oral_Lichen_Planus.jpg",
                     description: "Chronic inflammatory condition affecting mucous membranes. Appears as lacy white patches, sometimes with painful sores."
                 },
                 {
-                    id: "scc", title: "Squamous Cell Carcinoma",
-                    description: "Most common form of oral cancer. Appears as an unexplained sore that doesn't heal, a lump, or thick patch."
-                },
-                {
-                    id: "herpes", title: "Herpes Simplex",
-                    description: "Viral infections manifesting as painful blisters filled with fluid, typically on lips but can occur inside mouth."
+                    id: "linea-alba", title: "Linea Alba Buccalis",
+                    imgUrl: "/Linea alba buccalis.jpg",
+                    description: "A common, benign white line on the inner cheek usually caused by chronic friction or teeth clenching."
                 }
             ]
         },

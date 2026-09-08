@@ -73,9 +73,9 @@ export default function Home() {
 
           <div className="xl:w-2/3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 w-full">
             {/* Card 1 */}
-            <div className="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden hover:shadow-md transition">
-              <div className="w-full h-48 bg-slate-100 border-b border-slate-100">
-                <img src="https://placehold.co/400x300/f8fafc/64748b?text=Ulcers" alt="Ulcers" className="w-full h-full object-cover" />
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden hover:shadow-md transition group cursor-pointer">
+              <div className="w-full h-48 bg-slate-100 border-b border-slate-100 relative overflow-hidden">
+                <img src="/Ulcer.jpg" alt="Ulcers" className="w-full h-full object-cover blur-md group-hover:blur-0 group-hover:scale-105 transition-all duration-500 opacity-90 group-hover:opacity-100" />
               </div>
               <div className="p-5 sm:p-6">
                 <h3 className="font-bold text-slate-900 mb-1">{t('home.ulcer')}</h3>
@@ -84,9 +84,9 @@ export default function Home() {
             </div>
 
             {/* Card 2 */}
-            <div className="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden hover:shadow-md transition">
-              <div className="w-full h-48 bg-slate-100 border-b border-slate-100">
-                <img src="https://placehold.co/400x300/f8fafc/64748b?text=Candidiasis" alt="Candidiasis" className="w-full h-full object-cover" />
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden hover:shadow-md transition group cursor-pointer">
+              <div className="w-full h-48 bg-slate-100 border-b border-slate-100 relative overflow-hidden">
+                <img src="/Oral_candidiasis.png" alt="Candidiasis" className="w-full h-full object-cover blur-md group-hover:blur-0 group-hover:scale-105 transition-all duration-500 opacity-90 group-hover:opacity-100" />
               </div>
               <div className="p-5 sm:p-6">
                 <h3 className="font-bold text-slate-900 mb-1">{t('home.candidiasis')}</h3>
@@ -95,9 +95,9 @@ export default function Home() {
             </div>
 
             {/* Card 3 */}
-            <div className="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden hover:shadow-md transition">
-              <div className="w-full h-48 bg-slate-100 border-b border-slate-100">
-                <img src="https://placehold.co/400x300/f8fafc/64748b?text=Leukoplakia" alt="Leukoplakia" className="w-full h-full object-cover" />
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden hover:shadow-md transition group cursor-pointer">
+              <div className="w-full h-48 bg-slate-100 border-b border-slate-100 relative overflow-hidden">
+                <img src="/Leukoplakia.jpg" alt="Leukoplakia" className="w-full h-full object-cover blur-md group-hover:blur-0 group-hover:scale-105 transition-all duration-500 opacity-90 group-hover:opacity-100" />
               </div>
               <div className="p-5 sm:p-6">
                 <h3 className="font-bold text-slate-900 mb-1">{t('home.leuko')}</h3>
