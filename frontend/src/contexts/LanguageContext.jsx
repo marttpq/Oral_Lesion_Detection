@@ -152,7 +152,9 @@ export const translations = {
             forgotPassword: "ลืมรหัสผ่าน?",
             signIn: "เข้าสู่ระบบ",
             noAccount: "ยังไม่มีบัญชี?",
-            signUp: "สมัครใช้งาน"
+            signUp: "สมัครใช้งาน",
+            or: "หรือ",
+            google: "เข้าสู่ระบบด้วย Google"
         }
     },
     EN: {
@@ -304,7 +306,9 @@ export const translations = {
             forgotPassword: "Forgot password?",
             signIn: "Sign In",
             noAccount: "Don't have an account?",
-            signUp: "Sign up"
+            signUp: "Sign up",
+            or: "or",
+            google: "Sign in with Google"
         }
     }
 };
