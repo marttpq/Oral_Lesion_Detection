@@ -1,10 +1,19 @@
 import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
 import Home from './components/Home';
 import Information from './components/Information';
 import Login from './components/Login';
+import { useAuth } from './contexts/AuthContext';
+
+function ProtectedRoute({ children }) {
+  const { user } = useAuth();
+  if (!user) {
+    return <Navigate to="/login" state={{ fromProtected: true }} replace />;
+  }
+  return children;
+}
 
 export default function App() {
   const location = useLocation();
@@ -17,7 +26,11 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/information" element={<Information />} />
-          <Route path="/assessment" element={<Dashboard />} />
+          <Route path="/assessment" element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          } />
           <Route path="/login" element={<Login />} />
         </Routes>
       </div>

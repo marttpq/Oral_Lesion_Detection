@@ -54,8 +54,23 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ==========================================
 # 2.2 Mount Static Files
+# ==========================================
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
+
+# ==========================================
+# 2.3 Database Setup and Routers
+# ==========================================
+from database import engine, Base
+from routers import auth as auth_router
+
+@app.on_event("startup")
+async def startup():
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+        
+app.include_router(auth_router.router)
 
 # ==========================================
 # 3. Pydantic Schemas & Helpers

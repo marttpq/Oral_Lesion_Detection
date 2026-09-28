@@ -5,6 +5,7 @@ import ModelSelector from './ModelSelector';
 import YoloSymptomsForm from './YoloSymptomsForm';
 import DenseNetSymptomsForm from './DenseNetSymptomsForm';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useAuth } from '../contexts/AuthContext';
 
 const SYMPTOM_MAP = {
   noSymptoms: 'ไม่มีอาการ',
@@ -37,6 +38,7 @@ const LESION_LOCATION_MAP = {
 
 export default function Dashboard() {
   const { t } = useLanguage();
+  const { user } = useAuth(); // Retrieve authenticated user
 
   const [file, setFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
@@ -165,6 +167,12 @@ export default function Dashboard() {
 
   return (
     <main className="w-full max-w-[95%] 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      {user && (
+        <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 text-green-700 text-sm font-semibold shadow-sm">
+          <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+          Authenticated: Secure Clinical Session
+        </div>
+      )}
       <div className="mb-8 sm:mb-10 text-left">
         <span className="text-xs font-bold text-blue-600 tracking-wider uppercase block mb-2">
           {t('dashboard.headerTag')}
