@@ -1,5 +1,6 @@
 import React from 'react';
 import { BookOpen } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Information() {
@@ -30,7 +31,7 @@ export default function Information() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 w-full">
                 {diseases.map((disease) => (
-                    <div key={disease.id} className="bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow flex flex-col group cursor-pointer">
+                    <Link to={`/information/${disease.id}`} key={disease.id} className="bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow flex flex-col group cursor-pointer">
                         <div className="w-full h-48 sm:h-52 bg-slate-100 relative overflow-hidden border-b border-slate-100">
                             <img src={disease.imgUrl} alt={disease.title} className="w-full h-full object-cover blur-md group-hover:blur-0 group-hover:scale-105 transition-all duration-500 opacity-90 group-hover:opacity-100" />
                         </div>
@@ -43,7 +44,7 @@ export default function Information() {
                                 {disease.description}
                             </p>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </main>

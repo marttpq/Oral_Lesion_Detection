@@ -64,6 +64,8 @@ async def google_auth(request_data: schemas.GoogleAuthRequest, db: AsyncSession 
         if not email:
             raise HTTPException(status_code=400, detail="Google token missing email")
 
+        picture = user_info.get("picture")
+
         result = await db.execute(select(models.User).where(models.User.email == email))
         user = result.scalars().first()
         
@@ -80,8 +82,9 @@ async def google_auth(request_data: schemas.GoogleAuthRequest, db: AsyncSession 
                 await db.commit()
 
         access_token_expires = timedelta(minutes=auth_utils.ACCESS_TOKEN_EXPIRE_MINUTES)
+        # Embed the picture string directly into the JWT without mutating DB schema!
         access_token = auth_utils.create_access_token(
-            data={"sub": user.email, "id": user.id}, expires_delta=access_token_expires
+            data={"sub": user.email, "id": user.id, "picture": picture}, expires_delta=access_token_expires
         )
         return {"access_token": access_token, "token_type": "bearer"}
     except ValueError:

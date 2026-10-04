@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const LanguageContext = createContext();
 
@@ -314,7 +314,11 @@ export const translations = {
 };
 
 export function LanguageProvider({ children }) {
-    const [lang, setLang] = useState('EN'); // Defaulting to EN as requested "add translation for english" indicates they want to see EN
+    const [lang, setLang] = useState(() => localStorage.getItem('language') || 'TH');
+
+    useEffect(() => {
+        localStorage.setItem('language', lang);
+    }, [lang]);
 
     const toggleText = (keyPath) => {
         try {

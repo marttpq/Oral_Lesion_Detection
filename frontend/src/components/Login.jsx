@@ -102,9 +102,6 @@ export default function Login() {
                 </div>
                 <div className="z-30 flex flex-col justify-center px-10 xl:px-16 w-full h-full">
                     <div className="max-w-md">
-                        <span className="inline-block text-blue-200 font-semibold tracking-wider text-[10px] uppercase mb-4 border border-blue-400/30 bg-blue-500/10 px-3 py-1.5 rounded-full">
-                            Secure Clinical Portal
-                        </span>
                         <h2 className="text-3xl xl:text-[34px] font-serif font-bold text-white leading-[1.25] mb-4">
                             {lang === 'TH' ? "แพลตฟอร์มสนับสนุนการคัดกรองรอยโรคด้วยระบบ AI" : "AI-Assisted Oral Screening & Diagnostic Support"}
                         </h2>

@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 import Home from './components/Home';
 import Information from './components/Information';
 import Login from './components/Login';
+import DiseaseDetail from './components/DiseaseDetail';
 import { useAuth } from './contexts/AuthContext';
 
 function ProtectedRoute({ children }) {
@@ -26,6 +27,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/information" element={<Information />} />
+          <Route path="/information/:id" element={<DiseaseDetail />} />
           <Route path="/assessment" element={
             <ProtectedRoute>
               <Dashboard />
