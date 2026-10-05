@@ -33,8 +33,11 @@ def test_endpoint(model_type, text=""):
         print(json.dumps(res, indent=2, ensure_ascii=False))
 
 if __name__ == "__main__":
-    print("Testing YOLO Model...")
-    test_endpoint("YOLO")
+    print("Testing YOLOv7 Model...")
+    test_endpoint("YOLOv7", "smoking")
+    
+    print("\nTesting YOLOv8 Model...")
+    test_endpoint("YOLOv8", "alwaysHurts")
     
     print("\nTesting DenseNet-BERT Model...")
     test_endpoint("DenseNet-BERT", "ดื่มเครื่องดื่มแอลกอฮอล์ สูบบุหรี่ ปื้นขาว ลิ้น")

@@ -136,14 +136,18 @@ async def assess_lesion(
     """
     # 4.1 Validate Model Type
     normalized_model = modelType.strip().upper()
-    if normalized_model in ["YOLO", "YOLOV7", "YOLOV8"]:
-        standard_model_name = "YOLO"
+    if normalized_model in ["YOLOV7", "V7"]:
+        standard_model_name = "YOLOv7"
+    elif normalized_model in ["YOLOV8", "V8"]:
+        standard_model_name = "YOLOv8"
+    elif normalized_model in ["YOLO"]:
+        standard_model_name = "YOLOv7"  # Default to YOLOv7 matching COOKIE Project
     elif normalized_model in ["DENSENET-BERT", "DENSENET", "DENSENET+WANGCHANBERTA"]:
         standard_model_name = "DenseNet-BERT"
     else:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"Invalid modelType '{modelType}'. Must be either 'YOLO' or 'DenseNet-BERT'."
+            detail=f"Invalid modelType '{modelType}'. Must be 'YOLOv7', 'YOLOv8', or 'DenseNet-BERT'."
         )
 
     # 4.2 Validate Image Upload
@@ -203,7 +207,7 @@ async def assess_lesion(
             "confidence_score": 0.85,
             "bounding_boxes": [
                 {"xmin": 120.0, "ymin": 80.0, "xmax": 340.0, "ymax": 290.0, "label": "Lichen planus", "conf": 0.85}
-            ] if standard_model_name == "YOLO" else [],
+            ] if "YOLO" in standard_model_name.upper() else [],
             "image_b64": None
         }
 

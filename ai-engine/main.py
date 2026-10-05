@@ -43,7 +43,23 @@ app = FastAPI(
 # ==========================================
 # 3. Model Pre-loading & Inference Logic
 # ==========================================
+# 3. Model Pre-loading & Inference Logic
+# ==========================================
 from collections import defaultdict
+import threading
+import cv2
+import torch
+
+CONF_THRESHOLD = 0.25
+
+# COOKIE Project Visual and Metadata Constants
+DETECTION_META = {
+    "Leukoplakia": {"color": (0, 255, 0)},       # Green in BGR
+    "Lichen planus": {"color": (0, 0, 255)},     # Red in BGR
+    "Candidiasis": {"color": (255, 255, 255)},   # White
+    "Linea alba buccalis": {"color": (128, 128, 128)}, # Gray
+    "Ulcer": {"color": (255, 140, 0)},           # Orange in BGR
+}
 
 DISPLAY_NAMES = {
     "leukoplakia": "Leukoplakia",
@@ -58,20 +74,34 @@ DISPLAY_NAMES = {
 }
 
 PATIENT_CONDITIONS = {
-    "Leukoplakia": ["drinkAlcohol", "smoking", "chewBetelNut", "ดื่มเหล้า", "สูบบุหรี่", "เคี้ยวหมาก"],
-    "Lichen planus": ["eatSpicyFood", "กินเผ็ดแสบ", "รับประทานอาหารเผ็ด"],
-    "Candidiasis": ["wipeOff", "เช็ดออกได้", "คราบขาวที่สามารถลอกออก"],
-    "Linea alba buccalis": ["noSymptoms", "ไม่มีอาการ", "ไม่มีอาการผิดปกติ"],
-    "Ulcer": ["alwaysHurts", "เจ็บเมื่อโดนแผล", "มีอาการเจ็บ"],
+    "Leukoplakia": [
+        "drinkalcohol", "smoking", "chewbetelnut",
+        "ดื่มเหล้า", "สูบบุหรี่", "เคี้ยวหมาก", "แอลกอฮอล์"
+    ],
+    "Lichen planus": [
+        "eatspicyfood", "กินเผ็ด", "กินเผ็ดแสบ", "รับประทานอาหารเผ็ด"
+    ],
+    "Candidiasis": [
+        "wipeoff", "เช็ดออก", "เช็ดออกได้", "คราบขาวที่สามารถลอกออก"
+    ],
+    "Linea alba buccalis": [
+        "nosymptoms", "ไม่มีอาการ", "ไม่มีอาการผิดปกติ"
+    ],
+    "Ulcer": [
+        "alwayshurts", "เจ็บเมื่อโดนแผล", "มีอาการเจ็บ", "เจ็บตลอดเวลา", "ระคายเคืองตลอดเวลา"
+    ],
 }
 
-def _box_iou_or_contained(box1: List[float], box2: List[float]) -> float:
+def _box_iou_or_contained(box1: list, box2: list) -> float:
     """
-    Calculate IoU or heavy containment between two [xmin, ymin, xmax, ymax] boxes.
-    Matches COOKIE Project concentric box suppression logic.
+    Calculate IoU or heavy containment between two [x, y, w, h] boxes.
+    Matches COOKIE Project concentric box suppression logic exactly.
     """
-    x1_1, y1_1, x2_1, y2_1 = box1
-    x1_2, y1_2, x2_2, y2_2 = box2
+    x1_1, y1_1, w1, h1 = box1
+    x2_1, y2_1 = x1_1 + w1, y1_1 + h1
+
+    x1_2, y1_2, w2, h2 = box2
+    x2_2, y2_2 = x1_2 + w2, y1_2 + h2
 
     x_left = max(x1_1, x1_2)
     y_top = max(y1_1, y1_2)
@@ -82,8 +112,8 @@ def _box_iou_or_contained(box1: List[float], box2: List[float]) -> float:
         return 0.0
 
     intersection = (x_right - x_left) * (y_bottom - y_top)
-    area1 = max(0.0, x2_1 - x1_1) * max(0.0, y2_1 - y1_1)
-    area2 = max(0.0, x2_2 - x1_2) * max(0.0, y2_2 - y1_2)
+    area1 = w1 * h1
+    area2 = w2 * h2
     union = area1 + area2 - intersection
 
     iou = intersection / float(union) if union > 0 else 0.0
@@ -96,6 +126,7 @@ def _box_iou_or_contained(box1: List[float], box2: List[float]) -> float:
 def _filter_overlapping_boxes(detections: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """
     Aggressively suppress overlapping or concentric boxes of the same class (>40% overlap or >70% containment).
+    Matches COOKIE Project _filter_overlapping_boxes.
     """
     if not detections:
         return []
@@ -105,11 +136,9 @@ def _filter_overlapping_boxes(detections: List[Dict[str, Any]]) -> List[Dict[str
 
     for current_det in sorted_dets:
         keep = True
-        box_cur = [current_det["xmin"], current_det["ymin"], current_det["xmax"], current_det["ymax"]]
         for kept_det in filtered:
             if current_det["label"] == kept_det["label"]:
-                box_kept = [kept_det["xmin"], kept_det["ymin"], kept_det["xmax"], kept_det["ymax"]]
-                overlap = _box_iou_or_contained(box_cur, box_kept)
+                overlap = _box_iou_or_contained(current_det["box"], kept_det["box"])
                 if overlap > 0.40:
                     keep = False
                     break
@@ -118,53 +147,235 @@ def _filter_overlapping_boxes(detections: List[Dict[str, Any]]) -> List[Dict[str
 
     return filtered
 
-def calculate_cookie_evaluation(boxes: List[Dict[str, Any]], prompt_text: str) -> tuple:
-    """
-    Computes winning diagnosis and clinical confidence score using the exact COOKIE Project formula:
-    - If symptom matches condition: score = round(sum_output / 2 + 0.5, 2)
-    - If symptom does not match: score = round(sum_output / 2, 2) if sum_output > 0.6 else sum_output
-    """
-    if not boxes:
-        return "No lesion detected", 0.0
+_MODEL_V7 = None
+_MODEL_V7_LOCK = threading.Lock()
+_MODEL_V8 = None
+_MODEL_V8_LOCK = threading.Lock()
 
-    patient_tokens: List[str] = []
-    if prompt_text:
-        clean_text = str(prompt_text).strip()
-        for tok in clean_text.replace(",", " ").replace(";", " ").split():
-            cleaned_tok = tok.strip()
-            if cleaned_tok:
-                patient_tokens.append(cleaned_tok)
-        patient_tokens.append(clean_text)
+def get_yolo_model_v7():
+    """Load native YOLOv7 model using WongKinYiu architecture."""
+    global _MODEL_V7
+    if _MODEL_V7 is not None:
+        return _MODEL_V7
 
+    with _MODEL_V7_LOCK:
+        if _MODEL_V7 is not None:
+            return _MODEL_V7
+        try:
+            from models.experimental import attempt_load
+            v7_path = YOLO_DIR / "yolov7.pt"
+            device = torch.device("cpu")
+            logger.info(f"Loading native YOLOv7 model from: {v7_path}")
+            model = attempt_load(str(v7_path), map_location=device)
+            model.eval()
+            _MODEL_V7 = model
+            logger.info("YOLOv7 native model loaded successfully.")
+        except Exception as e:
+            logger.error(f"Failed to load native YOLOv7: {e}")
+            _MODEL_V7 = None
+    return _MODEL_V7
+
+def get_yolo_model_v8():
+    """Load YOLOv8 model using Ultralytics."""
+    global _MODEL_V8
+    if _MODEL_V8 is not None:
+        return _MODEL_V8
+
+    with _MODEL_V8_LOCK:
+        if _MODEL_V8 is not None:
+            return _MODEL_V8
+        try:
+            import importlib
+            yolo_mod = importlib.import_module("ultralytics")
+            yolo_cls = getattr(yolo_mod, "YOLO")
+            v8_path = YOLO_DIR / "yolov8.pt"
+            logger.info(f"Loading YOLOv8 model from: {v8_path}")
+            _MODEL_V8 = yolo_cls(str(v8_path))
+            logger.info("YOLOv8 model loaded successfully.")
+        except Exception as e:
+            logger.error(f"Failed to load YOLOv8: {e}")
+            _MODEL_V8 = None
+    return _MODEL_V8
+
+def _run_native_yolov7(image_bgr: np.ndarray) -> tuple:
+    model = get_yolo_model_v7()
+    if model is None:
+        raise RuntimeError("Native YOLOv7 model could not be initialized.")
+
+    from utils.datasets import letterbox
+    from utils.general import non_max_suppression, scale_coords
+
+    cs_list: List[str] = []
+    confidence_map: Dict[str, List[float]] = defaultdict(list)
+    detections_raw: List[Dict[str, Any]] = []
+
+    device = torch.device("cpu")
+    stride = int(model.stride.max())
+    img = letterbox(image_bgr, 640, stride=stride)[0]
+    img = img[:, :, ::-1].transpose(2, 0, 1)  # BGR to RGB
+    img = np.ascontiguousarray(img)
+    img = torch.from_numpy(img).to(device).float() / 255.0
+    if img.ndimension() == 3:
+        img = img.unsqueeze(0)
+
+    with torch.no_grad():
+        pred = model(img, augment=False)[0]
+
+    pred = non_max_suppression(pred, CONF_THRESHOLD, 0.45, classes=None, agnostic=False)
+
+    class_names = model.names
     temp_groups = defaultdict(list)
-    for b in boxes:
-        label = b["label"]
-        temp_groups[label].append(b["conf"])
 
+    for i, det in enumerate(pred):
+        if len(det):
+            det[:, :4] = scale_coords(img.shape[2:], det[:, :4], image_bgr.shape).round()
+            for *xyxy, conf, cls in reversed(det):
+                box_coords = [float(c) for c in xyxy]
+                conf_val = float(conf)
+                cls_id = int(cls)
+                if conf_val < CONF_THRESHOLD:
+                    continue
+                cls_name = class_names[cls_id] if isinstance(class_names, (list, dict)) else str(cls_id)
+                display_name = DISPLAY_NAMES.get(cls_name.lower().replace(" ", ""), cls_name)
+                if display_name in DETECTION_META:
+                    temp_groups[display_name].append({"box": box_coords, "conf": conf_val})
+
+    for display_name, detections in temp_groups.items():
+        avg_score = round(sum(d["conf"] for d in detections) / len(detections), 2)
+        cs_list.append(display_name)
+        confidence_map[display_name].append(avg_score)
+        for d in detections:
+            x1, y1, x2, y2 = map(int, d["box"])
+            detections_raw.append({
+                "box": [x1, y1, x2 - x1, y2 - y1],
+                "xmin": x1,
+                "ymin": y1,
+                "xmax": x2,
+                "ymax": y2,
+                "label": display_name,
+                "conf": round(d["conf"], 4)
+            })
+
+    return cs_list, confidence_map, detections_raw
+
+def _run_ultralytics_yolov8(image_bgr: np.ndarray) -> tuple:
+    model = get_yolo_model_v8()
+    if model is None:
+        raise RuntimeError("YOLOv8 model could not be initialized.")
+
+    results = model(image_bgr, verbose=False, device="cpu", conf=CONF_THRESHOLD)
+
+    cs_list: List[str] = []
+    confidence_map: Dict[str, List[float]] = defaultdict(list)
+    detections_raw: List[Dict[str, Any]] = []
+
+    for r in results:
+        for box in r.boxes:
+            b = box.xyxy[0]
+            x, y, x1, y1 = int(b[0]), int(b[1]), int(b[2]), int(b[3])
+            cls_name = model.names[int(box.cls)]
+            display_name = DISPLAY_NAMES.get(cls_name.lower().replace(" ", ""), cls_name)
+            conf_val = round(float(box.conf), 2)
+            if conf_val < CONF_THRESHOLD or display_name not in DETECTION_META:
+                continue
+            cs_list.append(display_name)
+            confidence_map[display_name].append(conf_val)
+            detections_raw.append({
+                "box": [x, y, x1 - x, y1 - y],
+                "xmin": x,
+                "ymin": y,
+                "xmax": x1,
+                "ymax": y1,
+                "label": display_name,
+                "conf": round(float(box.conf), 4)
+            })
+
+    return cs_list, confidence_map, detections_raw
+
+def draw_cookie_boxes_to_b64(cv_img_bgr: np.ndarray, detections: List[Dict[str, Any]]) -> str:
+    """
+    Renders styled bounding boxes and labels onto the image exactly matching COOKIE Project.
+    """
+    image = cv_img_bgr.copy()
+    for det in detections:
+        x, y, w, h = det["box"]
+        lbl_name = det["label"]
+        conf_val = det["conf"]
+        meta = DETECTION_META.get(lbl_name, {"color": (34, 197, 94)})
+        box_color = meta.get("color", (34, 197, 94))
+
+        # 1. Bounding Box rectangle
+        cv2.rectangle(image, (int(x), int(y)), (int(x + w), int(y + h)), box_color, 3)
+
+        # 2. Text color based on luminosity
+        b, g, r = box_color
+        luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255.0
+        text_color = (0, 0, 0) if luminance > 0.6 else (255, 255, 255)
+
+        # 3. Label banner
+        txt = f"{lbl_name} {int(conf_val * 100)}%"
+        (tw, th), _ = cv2.getTextSize(txt, cv2.FONT_HERSHEY_SIMPLEX, 0.6, 2)
+        cv2.rectangle(image, (int(x), int(y) - th - 15), (int(x) + tw + 5, int(y)), box_color, -1)
+        cv2.putText(image, txt, (int(x) + 2, int(y) - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, text_color, 2)
+
+    _, buffer = cv2.imencode(".jpg", image, [int(cv2.IMWRITE_JPEG_QUALITY), 88])
+    return base64.b64encode(buffer).decode("utf-8")
+
+def infer_yolo(pil_image: Image.Image, prompt_text: str = "", model_version: str = "v7") -> Dict[str, Any]:
+    """
+    Executes YOLO inference with COOKIE Project pipeline, clinical symptom matching, and scoring logic.
+    """
+    image_bgr = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR)
+
+    if model_version.lower() in ["v8", "yolov8"]:
+        active_ver = "v8"
+        cs_list, confidence_map, detections_raw = _run_ultralytics_yolov8(image_bgr)
+    else:
+        active_ver = "v7"
+        cs_list, confidence_map, detections_raw = _run_native_yolov7(image_bgr)
+
+    # Sort by confidence
+    detections_raw = sorted(detections_raw, key=lambda x: x["conf"], reverse=True)
+
+    # Apply COOKIE concentric and overlap suppression
+    filtered_boxes = _filter_overlapping_boxes(detections_raw)
+
+    # Parse patient symptoms tokens
+    patient_tokens: set = set()
+    if prompt_text:
+        for tok in str(prompt_text).replace(",", " ").replace(";", " ").split():
+            cleaned = tok.strip().lower()
+            if cleaned:
+                patient_tokens.add(cleaned)
+        patient_tokens.add(str(prompt_text).strip().lower())
+
+    # Calculate average confidences matching COOKIE _finalise_inference
     avg_conf: Dict[str, float] = {
-        k: round(sum(v) / len(v), 2) for k, v in temp_groups.items()
+        k: round(sum(v) / len(v), 2) for k, v in confidence_map.items()
     }
 
     unmatch = True
-    name_out = "No lesion detected"
-
-    for condition, markers in PATIENT_CONDITIONS.items():
-        if condition in avg_conf:
-            has_match = False
-            for marker in markers:
-                marker_lower = marker.lower()
-                if any(marker_lower in token.lower() for token in patient_tokens):
-                    has_match = True
+    if not cs_list:
+        name_out = "No Detection"
+    else:
+        name_out = "No Detection"
+        for condition, markers in PATIENT_CONDITIONS.items():
+            if condition in cs_list:
+                has_match = False
+                for marker in markers:
+                    marker_clean = marker.lower()
+                    if any(marker_clean in tok or tok in marker_clean for tok in patient_tokens):
+                        has_match = True
+                        break
+                if has_match:
+                    name_out = condition
+                    unmatch = False
                     break
-            if has_match:
-                name_out = condition
-                unmatch = False
-                break
 
-    if unmatch and avg_conf:
-        name_out = max(avg_conf, key=avg_conf.get)
+        if unmatch and avg_conf:
+            name_out = max(avg_conf, key=avg_conf.get)
 
-    if not avg_conf or name_out == "No lesion detected":
+    if not avg_conf or name_out == "No Detection":
         sum_output = 0.0
         eva_output_raw = 0.0
     else:
@@ -174,109 +385,20 @@ def calculate_cookie_evaluation(boxes: List[Dict[str, Any]], prompt_text: str) -
         else:
             eva_output_raw = round(sum_output / 2.0, 2) if sum_output > 0.6 else sum_output
 
-    return name_out, round(eva_output_raw, 4)
+    eva_output = int(round(eva_output_raw * 100))
+    confidence_score = round(eva_output / 100.0, 4)
 
-yolo_model = None
-densenet_loaded = False
-
-def get_yolo_model():
-    global yolo_model
-    if yolo_model is None:
-        try:
-            import importlib
-            yolo_mod = importlib.import_module("ultralytics")
-            yolo_cls = getattr(yolo_mod, "YOLO")
-            v8_path = YOLO_DIR / "yolov8.pt"
-            v7_path = YOLO_DIR / "yolov7.pt"
-            model_path = str(v8_path if v8_path.exists() else v7_path)
-            logger.info(f"Loading YOLO model from: {model_path}")
-            yolo_model = yolo_cls(model_path)
-        except Exception as e:
-            logger.warning(f"Could not initialize Ultralytics YOLO: {e}")
-            yolo_model = None
-    return yolo_model
-
-def draw_boxes_to_b64(pil_image: Image.Image, boxes: List[Dict[str, Any]]) -> str:
-    """
-    Draws bounding boxes on the image and returns base64 JPEG string.
-    """
-    img = pil_image.copy().convert("RGB")
-    draw = ImageDraw.Draw(img)
-
-    color_map = {
-        "leukoplakia": "#EF4444",
-        "lichenplanus": "#3B82F6",
-        "candidiasis": "#10B981",
-        "otherwhite": "#6B7280",
-        "ulcer": "#F59E0B",
-        "linea alba buccalis": "#8B5CF6"
-    }
-
-    for b in boxes:
-        xmin, ymin, xmax, ymax = b["xmin"], b["ymin"], b["xmax"], b["ymax"]
-        label = b["label"]
-        conf = b["conf"]
-        color = color_map.get(label.lower().replace(" ", ""), "#2563EB")
-
-        draw.rectangle([xmin, ymin, xmax, ymax], outline=color, width=4)
-        text = f"{label} {int(conf * 100)}%"
-        text_bbox = draw.textbbox((xmin, max(0, ymin - 18)), text)
-        draw.rectangle([text_bbox[0] - 2, text_bbox[1] - 2, text_bbox[2] + 2, text_bbox[3] + 2], fill=color)
-        draw.text((xmin, max(0, ymin - 18)), text, fill="white")
-
-    buffer = io.BytesIO()
-    img.save(buffer, format="JPEG", quality=90)
-    return base64.b64encode(buffer.getvalue()).decode("utf-8")
-
-def infer_yolo(pil_image: Image.Image, prompt_text: str = "") -> Dict[str, Any]:
-    """
-    Executes YOLO object detection with COOKIE Project clinical matching and scoring logic.
-    """
-    model = get_yolo_model()
-    boxes_result: List[Dict[str, Any]] = []
-    
-    if model is not None:
-        try:
-            results = model.predict(source=pil_image, conf=0.25, verbose=False)
-            if results is not None and hasattr(results, "__len__") and len(results) > 0:
-                res = results[0]
-                boxes = getattr(res, "boxes", None)
-                if boxes is not None:
-                    for box in boxes:
-                        xyxy = box.xyxy[0].cpu().numpy().tolist()
-                        conf = float(box.conf[0].cpu().numpy())
-                        cls_idx = int(box.cls[0].cpu().numpy())
-                        names = getattr(model, "names", {})
-                        raw_label = names.get(cls_idx, f"Class {cls_idx}") if isinstance(names, dict) else f"Class {cls_idx}"
-                        std_label = DISPLAY_NAMES.get(raw_label.lower().replace(" ", "").replace("_", ""), raw_label)
-
-                        boxes_result.append({
-                            "xmin": round(float(xyxy[0]), 1),
-                            "ymin": round(float(xyxy[1]), 1),
-                            "xmax": round(float(xyxy[2]), 1),
-                            "ymax": round(float(xyxy[3]), 1),
-                            "label": std_label,
-                            "conf": round(conf, 4)
-                        })
-        except Exception as e:
-            logger.error(f"YOLO inference error: {e}")
-
-    # 1. Apply COOKIE concentric and heavy overlap box suppression
-    filtered_boxes = _filter_overlapping_boxes(boxes_result)
-
-    # 2. Apply COOKIE clinical condition matching and confidence score calculation
-    top_disease, final_confidence = calculate_cookie_evaluation(filtered_boxes, prompt_text)
-
-    # 3. Render bounding boxes onto image
-    image_b64 = draw_boxes_to_b64(pil_image, filtered_boxes)
+    # Draw COOKIE stylized boxes
+    drawn_b64 = draw_cookie_boxes_to_b64(image_bgr, filtered_boxes)
 
     return {
         "success": True,
-        "model_used": "YOLO",
-        "disease_name": top_disease,
-        "confidence_score": final_confidence,
+        "model_used": f"YOLO{active_ver.upper()}",
+        "disease_name": name_out,
+        "confidence_score": confidence_score,
+        "eva_output": eva_output,
         "bounding_boxes": filtered_boxes,
-        "image_b64": image_b64
+        "image_b64": drawn_b64
     }
 
 def infer_densenet_bert(pil_image: Image.Image, prompt_text: str) -> Dict[str, Any]:
@@ -369,8 +491,10 @@ async def run_inference(
         )
 
     norm_type = modelType.strip().upper()
-    if norm_type in ["YOLO", "YOLOV7", "YOLOV8"]:
-        result = infer_yolo(pil_image, text or "")
+    if "V8" in norm_type:
+        result = infer_yolo(pil_image, text or "", model_version="v8")
+    elif "YOLO" in norm_type or "V7" in norm_type:
+        result = infer_yolo(pil_image, text or "", model_version="v7")
     elif norm_type in ["DENSENET-BERT", "DENSENET", "DENSENET+WANGCHANBERTA"]:
         result = infer_densenet_bert(pil_image, text or "")
     else:

@@ -1,0 +1,153 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8
+
+\documentclass{itkmitlproject}
+
+\usepackage{afterpage}
+\usepackage{graphicx,amsmath,latexsym,amssymb,amsthm}
+\usepackage{indentfirst}
+\usepackage{hyperref}
+\usepackage{hyphenat}
+\usepackage[numbers,square]{natbib}
+\usepackage{lipsum}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{shapes, arrows, positioning, fit, calc, backgrounds}
+
+% \useEnglish
+\useThai
+
+\graphicspath{ {images/} }
+
+%1. Your thesis title (THAI)
+\newcommand{\ThesisTitle}{การพัฒนาแพลตฟอร์มสำหรับการสนับสนุนการวินิจฉัยรอยโรคทางช่องปากและผสมผสานการใช้งานระบบผู้เชี่ยวชาญสำหรับทันตแพทย์}
+%2. Your thesis title (ENG)
+\newcommand{\ThesisTitleENG}{Development of an Oral Lesion Diagnosis Support Platform and Integrated Expert System}
+%3. Author name
+\newcommand{\Author}{นายต้นน้ำ ห้วยหงษ์ทอง}
+%4. Author name ENG
+\newcommand{\AuthorENG}{Tonnam Huayhongthong}
+%5. Author student ID
+\newcommand{\SId}{66070259}
+%6. Author 2 name
+\newcommand{\AuthorTwo}{นายธิติพัทธ์ สนประเสริฐกุล}
+%7. Author 2 name ENG
+\newcommand{\AuthorTwoENG}{add yo eng name twin, idk how to spell}
+%8. Author 2 student ID
+\newcommand{\SIdTwo}{66070271}
+%9. Advisor name
+\newcommand{\Advisor}{ผู้ช่วยศาสตราจารย์ ดร.สุวิทย์ ภูมิฤทธิกุล}
+%10. Advisor name ENG
+\newcommand{\AdvisorENG}{Asst. Prof. Dr. Suvit Poomrittigul}
+%11. Advisor name
+\newcommand{\AdvisorTwo}{}
+%12. Advisor name ENG
+\newcommand{\AdvisorTwoENG}{}
+%13. ภาคเรียนที่
+\newcommand{\Sem}{1}
+%14. ปีการศึกษา พ.ศ.
+\newcommand{\AcaY}{2569}
+%15. ปีการศึกษา ค.ศ.
+%\newcommand{\AcaYAD}{2019}
+\newcommand{\AcaYAD}{\the\numexpr\AcaY-543\relax}
+%16. วันส่งรายงาน
+\newcommand{\SubD}{20 กันยายน พ.ศ. 2569}
+%17. Copyright year (AD)
+\newcommand{\CopyrightYAD}{2026}
+
+\newcommand{\Qualification}{วิทยาศาสตรบัณฑิต}
+\newcommand{\QualificationENG}{Bachelor of Science}
+%\newcommand{\Program}{เทคโนโลยีสารสนเทศ}
+%\newcommand{\ProgramENG}{Information Technology}
+\newcommand{\Program}{วิชาเทคโนโลยีสารสนเทศ}
+\newcommand{\ProgramENG}{Information Technology}
+
+
+
+\begin{document}
+    \frontmatter
+    \lhead{}\rhead{}\chead{}\lfoot{}\cfoot{\thepage}\rfoot{}
+    \makecover
+    \makeinnercover
+    \makeengcover
+    \makecopyrightcover
+    \makethesiscert
+    \makeprojectcert
+%	\sloppy
+    % Setting margin for page numbering on frontmatter
+    \newgeometry{top=1in, bottom=1in, left=1.5in, right=1in, includefoot}
+    \setcounter{page}{1}
+    \pagenumbering{Roman}
+
+    \makeabstract{
+    
+        ปัจจุบันการตรวจคัดกรองรอยโรคทางช่องปากเพื่อประเมินความเสี่ยงมะเร็งมักประสบปัญหาความล่าช้า เนื่องจากความซับซ้อนของโรคและข้อจำกัดด้านจำนวนทันตแพทย์เฉพาะทาง ที่ผ่านมาได้มีการพัฒนาระบบปัญญาประดิษฐ์เพื่อช่วยคัดกรองรอยโรคในระดับ งานวิจัยต้นแบบ จนประสบความสำเร็จ โครงงานนี้จึงมีแนวคิดในการต่อยอดและยกระดับงานวิจัยดังกล่าวให้เป็นแพลตฟอร์มเว็บแอปพลิเคชันสนับสนุนการตัดสินใจสำหรับทันตแพทย์ที่พร้อมนำไปประยุกต์ใช้งานจริงทางการแพทย์
+
+        ระบบที่พัฒนาขึ้นจะรับข้อมูลภาพถ่ายรอยโรคและประวัติทางคลินิกของผู้ป่วย นำเข้าสู่กระบวนการประมวลผลร่วมกับปัญญาประดิษฐ์เพื่อประเมินผลความเสี่ยงออกมาเป็นคะแนนที่แม่นยำ นอกจากนี้ ยังมีการพัฒนาระบบการให้ข้อมูลย้อนกลับ  บนหน้าแดชบอร์ดที่ช่วยให้ทันตแพทย์สามารถตรวจสอบและแก้ไขผลลัพธ์ของปัญญาประดิษฐ์ เพื่อรวบรวมเป็นชุดข้อมูลคุณภาพสูงสำหรับการพัฒนาความแม่นยำในอนาคต
+
+        การพัฒนาระบบมุ่งเน้นการออกแบบสถาปัตยกรรมคลาวด์ในรูปแบบไมโครเซอร์วิส ควบคู่กับการนำหลักการส่งมอบระบบอัตโนมัติ และ Automated Testing มาประยุกต์ใช้เพื่อรองรับการขยายตัวและเพิ่มความเสถียรในการทำงาน พร้อมทั้งพัฒนาระบบยืนยันตัวตน และการจัดการสิทธิ์ที่รัดกุม เพื่อให้การจัดการข้อมูลผู้ป่วยมีความปลอดภัยสูงสุดตามมาตรฐานการคุ้มครองข้อมูลส่วนบุคคล
+    }
+
+    \makeabstracteng{
+
+        Currently, the screening process for oral lesions often faces delays due to the complexity of the diseases and a shortage of specialized dentists. While previous efforts have successfully developed an artificial intelligence screening model at a "Research Prototype" stage, this project aims to extend and elevate this foundation into a Production-Ready web-based decision-support platform for dentists.
+
+        The platform is designed to process oral lesion images alongside patient clinical history, utilizing an integrated AI processing engine to evaluate and generate a reliable clinical risk score. Additionally, the web dashboard features a "Feedback Loop" mechanism that allows dentists to review and manually correct AI predictions, thereby systematically curating high-quality data to improve future model accuracy.
+
+        The system development focuses on implementing a cloud-based Microservices architecture, integrating CI/CD pipelines, and utilizing Automated Testing to ensure deployment stability and scalability. Furthermore, secure authentication and authorization systems are incorporated to guarantee maximum patient data privacy and strict adherence to the Personal Data Protection Act (PDPA).
+    }
+
+    \makeack
+
+    \newpage
+    \addcontentsline{toc}{chapter}{\contentsname}
+    \tableofcontents
+
+    \newpage
+    \addcontentsline{toc}{chapter}{\listtablename}
+    \listoftables
+
+    \newpage
+    \addcontentsline{toc}{chapter}{\listfigurename}
+    \listoffigures
+
+    % Reset frontmatter page numbering margin, back to original margin from class file
+    \restoregeometry
+
+    \mainmatter
+    \lhead{}\rhead{\thepage}\chead{}\lfoot{}\cfoot{}\rfoot{}
+
+    \include{chapter1}
+    \include{chapter2}
+    \include{chapter3}
+    \include{chapter4}
+    \include{chapter5}
+
+    \clearpage
+
+    \def\inbib{1}
+    \addcontentsline{toc}{chapter}{\bibname}
+    \bibliographystyle{IEEEtran-kmitl}
+    \makeatletter
+    \EveryShipout{
+        \ifdim\pagetotal>\pagegoal
+            \if\inbib1
+                \aftergroup\@cont@heading
+            \else
+            \fi
+        \fi
+    }
+    \makeatother
+
+    \bibliography{reference}
+    \def\inbib{0}
+
+    \startappendix
+    \include{appendix}
+
+    \makeauthorbio
+
+\end{document}

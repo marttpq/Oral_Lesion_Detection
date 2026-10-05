@@ -92,8 +92,13 @@ export default function Dashboard() {
       const formData = new FormData();
       formData.append('image', file);
 
-      // modelType required: 'YOLO' or 'DenseNet-BERT'
-      const modelType = selectedModel === 'densenet-bert' ? 'DenseNet-BERT' : 'YOLO';
+      // modelType required: 'YOLOv7', 'YOLOv8', or 'DenseNet-BERT'
+      const modelType =
+        selectedModel === 'densenet-bert'
+          ? 'DenseNet-BERT'
+          : selectedModel === 'yolov7'
+          ? 'YOLOv7'
+          : 'YOLOv8';
       formData.append('modelType', modelType);
 
       // Clinical text prompt
@@ -148,7 +153,7 @@ export default function Dashboard() {
             disease_name: selectedModel === 'densenet-bert' ? 'Leukoplakia' : 'Lichen planus',
             confidence_score: 0.88,
             bounding_boxes:
-              modelType === 'YOLO'
+              modelType.startsWith('YOLO')
                 ? [
                     { xmin: 120, ymin: 80, xmax: 340, ymax: 290, label: 'Lichen planus', conf: 0.88 },
                   ]
