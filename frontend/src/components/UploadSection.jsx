@@ -1,11 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { Image as ImageIcon, ArrowUp, Check, X, FileImage } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function UploadSection({ file, setFile, previewUrl, setPreviewUrl }) {
   const [isDragging, setIsDragging] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [imageMeta, setImageMeta] = useState(null);
   const fileInputRef = useRef(null);
+  const { t } = useLanguage();
 
   const handleFileChange = (selectedFile) => {
     if (!selectedFile) return;
@@ -13,14 +15,14 @@ export default function UploadSection({ file, setFile, previewUrl, setPreviewUrl
     // Validate type
     const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
     if (!validTypes.includes(selectedFile.type)) {
-      setErrorMessage('โปรดอัปโหลดไฟล์รูปภาพที่ถูกต้อง (JPG, PNG หรือ WEBP)');
+      setErrorMessage(t('upload.typeError'));
       return;
     }
 
     // Validate size (max 20MB)
     const maxSize = 20 * 1024 * 1024;
     if (selectedFile.size > maxSize) {
-      setErrorMessage('ขนาดไฟล์เกินขีดจำกัด 20MB');
+      setErrorMessage(t('upload.sizeError'));
       return;
     }
 
@@ -81,8 +83,8 @@ export default function UploadSection({ file, setFile, previewUrl, setPreviewUrl
           <ImageIcon className="w-4 h-4" />
         </div>
         <div>
-          <h2 className="text-sm font-semibold text-slate-900 leading-tight">อัปโหลดภาพถ่าย</h2>
-          <p className="text-xs text-slate-400 mt-0.5">ภาพถ่ายรอยโรคภายในช่องปาก</p>
+          <h2 className="text-sm font-semibold text-slate-900 leading-tight">{t('dashboard.uploadTitle')}</h2>
+          <p className="text-xs text-slate-400 mt-0.5">{t('dashboard.uploadSubtitle')}</p>
         </div>
       </div>
 
@@ -93,11 +95,10 @@ export default function UploadSection({ file, setFile, previewUrl, setPreviewUrl
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
           onClick={() => fileInputRef.current?.click()}
-          className={`relative border-2 border-dashed rounded-xl p-8 sm:p-10 text-center transition-all cursor-pointer ${
-            isDragging
+          className={`relative border-2 border-dashed rounded-xl p-8 sm:p-10 text-center transition-all cursor-pointer ${isDragging
               ? 'border-blue-500 bg-blueprint-grid-active ring-4 ring-blue-500/10'
               : 'border-blue-200/90 hover:border-blue-400 bg-blueprint-grid'
-          }`}
+            }`}
         >
           <input
             ref={fileInputRef}
@@ -114,26 +115,26 @@ export default function UploadSection({ file, setFile, previewUrl, setPreviewUrl
 
           {/* Text Instructions */}
           <div className="text-sm text-slate-700 font-medium">
-            ลากและวางภาพที่นี่ หรือ{' '}
+            {t('dashboard.dragDrop1')}
             <span className="text-blue-600 underline font-semibold hover:text-blue-700">
-              คลิกเพื่อเลือกไฟล์
+              {t('dashboard.dragDrop2')}
             </span>
           </div>
-          <p className="text-xs text-slate-400 mt-1">JPG, PNG, WEBP · สูงสุด 20 MB</p>
+          <p className="text-xs text-slate-400 mt-1">{t('upload.sizeLimit')}</p>
 
           {/* Requirement Badges */}
           <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white border border-slate-200/90 text-slate-600 text-xs font-normal shadow-2xs">
               <Check className="w-3.5 h-3.5 text-blue-600 stroke-[2.5]" />
-              <span>ภาพถ่ายในช่องปากมีแสงสว่างเพียงพอ</span>
+              <span>{t('dashboard.uploadReq1')}</span>
             </div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white border border-slate-200/90 text-slate-600 text-xs font-normal shadow-2xs">
               <Check className="w-3.5 h-3.5 text-blue-600 stroke-[2.5]" />
-              <span>เห็นรอยโรคชัดเจนในกรอบภาพ</span>
+              <span>{t('dashboard.uploadReq2')}</span>
             </div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white border border-slate-200/90 text-slate-600 text-xs font-normal shadow-2xs">
               <Check className="w-3.5 h-3.5 text-blue-600 stroke-[2.5]" />
-              <span>ขนาดขั้นต่ำ 800 × 600 px</span>
+              <span>{t('dashboard.uploadReq3')}</span>
             </div>
           </div>
         </div>
@@ -143,7 +144,7 @@ export default function UploadSection({ file, setFile, previewUrl, setPreviewUrl
           <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-lg overflow-hidden border border-slate-200 bg-white shadow-xs shrink-0 flex items-center justify-center">
             <img
               src={previewUrl}
-              alt="ภาพตัวอย่างรอยโรคที่อัปโหลด"
+              alt="Preview"
               className="w-full h-full object-contain"
             />
           </div>
@@ -161,17 +162,17 @@ export default function UploadSection({ file, setFile, previewUrl, setPreviewUrl
                   type="button"
                   onClick={handleRemoveFile}
                   className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition"
-                  title="ลบรูปภาพ"
+                  title={t('upload.deleteImage')}
                 >
                   <X className="w-4 h-4" />
                 </button>
               </div>
 
               <div className="mt-2 space-y-1 text-xs text-slate-500">
-                <p>ขนาด: <span className="font-medium text-slate-700">{imageMeta?.sizeKb} KB</span></p>
+                <p>{t('upload.size')} <span className="font-medium text-slate-700">{imageMeta?.sizeKb} KB</span></p>
                 {imageMeta?.width && (
                   <p>
-                    มิติภาพ:{' '}
+                    {t('upload.dim')} {' '}
                     <span className="font-medium text-slate-700">
                       {imageMeta.width} × {imageMeta.height} px
                     </span>
@@ -182,16 +183,15 @@ export default function UploadSection({ file, setFile, previewUrl, setPreviewUrl
               {/* Resolution Tag */}
               <div className="mt-3 flex items-center gap-2">
                 <span
-                  className={`inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-0.5 rounded-full ${
-                    imageMeta?.isValidDimensions
+                  className={`inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-0.5 rounded-full ${imageMeta?.isValidDimensions
                       ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                       : 'bg-amber-50 text-amber-700 border border-amber-200'
-                  }`}
+                    }`}
                 >
                   <Check className="w-3 h-3" />
-                  {imageMeta?.isValidDimensions ? 'ความละเอียดภาพเหมาะสม' : 'ความละเอียดมาตรฐาน'}
+                  {imageMeta?.isValidDimensions ? t('upload.validDim') : t('upload.standardDim')}
                 </span>
-                <span className="text-[11px] text-slate-400">พร้อมสำหรับการประมวลผลด้วย AI</span>
+                <span className="text-[11px] text-slate-400">{t('upload.readyAi')}</span>
               </div>
             </div>
 
@@ -201,7 +201,7 @@ export default function UploadSection({ file, setFile, previewUrl, setPreviewUrl
                 onClick={() => fileInputRef.current?.click()}
                 className="text-xs text-blue-600 hover:text-blue-700 font-medium underline"
               >
-                เปลี่ยนภาพถ่าย
+                {t('upload.changeImage')}
               </button>
               <input
                 ref={fileInputRef}

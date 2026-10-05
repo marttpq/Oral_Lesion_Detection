@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function DenseNetSymptomsForm({
   symptoms = [],
@@ -10,48 +11,46 @@ export default function DenseNetSymptomsForm({
   clinicalNotes = '',
   setClinicalNotes,
 }) {
-  // Category 1: ประวัติ/อาการผู้ป่วย
+  const { t } = useLanguage();
+
   const historyCol1 = [
-    { id: 'noSymptoms', label: 'ไม่มีอาการผิดปกติ' },
-    { id: 'smoking', label: 'สูบบุหรี่' },
-    { id: 'eatSpicyFood', label: 'รับประทานอาหารเผ็ดแล้วรู้สึกระคายเคือง' },
-    { id: 'alwaysHurts', label: 'มีอาการเจ็บหรือระคายเคืองตลอดเวลา' },
+    { id: 'noSymptoms', label: t('symptoms.noSymptoms') },
+    { id: 'smoking', label: t('symptoms.smoking') },
+    { id: 'eatSpicyFood', label: t('symptoms.eatSpicy') },
+    { id: 'alwaysHurts', label: t('symptoms.alwaysHurts') },
   ];
 
   const historyCol2 = [
-    { id: 'drinkAlcohol', label: 'ดื่มเครื่องดื่มแอลกอฮอล์' },
-    { id: 'chewBetelNut', label: 'เคี้ยวหมาก' },
-    { id: 'wipeOff', label: 'คราบขาวที่สามารถลอกออกได้' },
+    { id: 'drinkAlcohol', label: t('symptoms.drinkAlcohol') },
+    { id: 'chewBetelNut', label: t('symptoms.chewBet') },
+    { id: 'wipeOff', label: t('symptoms.wipeOff') },
   ];
 
-  // Category 2: ลักษณะรอยโรค
   const featureCol1 = [
-    { id: 'whitePatch', label: 'ปื้นขาว' },
-    { id: 'whitePlaque', label: 'ฝ้าขาวเช็ดออกได้' },
-    { id: 'whiteYellowLesion', label: 'แผลสีขาวเหลือง' },
+    { id: 'whitePatch', label: t('symptoms.whitePatch') },
+    { id: 'whitePlaque', label: t('symptoms.whitePlaque') },
+    { id: 'whiteYellowLesion', label: t('symptoms.whiteYellow') },
   ];
 
   const featureCol2 = [
-    { id: 'whiteReticular', label: 'เส้นสีขาวคล้ายร่างแห' },
-    { id: 'whiteRaisedLine', label: 'เส้นสีขาวนูน' },
+    { id: 'whiteReticular', label: t('symptoms.whiteRet') },
+    { id: 'whiteRaisedLine', label: t('symptoms.whiteRaised') },
   ];
 
-  // Category 3: บริเวณรอยโรค
   const locationCol1 = [
-    { id: 'tongue', label: 'ลิ้น' },
-    { id: 'palate', label: 'เพดานปาก' },
-    { id: 'lip', label: 'ริมฝีปาก' },
-    { id: 'softTissue', label: 'เยื่อบุริมฝีปากด้านใน' },
+    { id: 'tongue', label: t('symptoms.tongue') },
+    { id: 'palate', label: t('symptoms.palate') },
+    { id: 'lip', label: t('symptoms.lip') },
+    { id: 'softTissue', label: t('symptoms.softTissue') },
   ];
 
   const locationCol2 = [
-    { id: 'buccalMucosa', label: 'กระพุ้งแก้ม' },
-    { id: 'gingiva', label: 'เหงือก' },
-    { id: 'floorOfMouth', label: 'พื้นปาก' },
-    { id: 'pharynx', label: 'คอหอย' },
+    { id: 'buccalMucosa', label: t('symptoms.buccal') },
+    { id: 'gingiva', label: t('symptoms.gingiva') },
+    { id: 'floorOfMouth', label: t('symptoms.floor') },
+    { id: 'pharynx', label: t('symptoms.pharynx') },
   ];
 
-  // Toggle helper for arrays
   const handleToggleArray = (id, list, setList, isSymptom = false) => {
     if (isSymptom && id === 'noSymptoms') {
       setList((prev) => (prev.includes('noSymptoms') ? [] : ['noSymptoms']));
@@ -70,165 +69,95 @@ export default function DenseNetSymptomsForm({
 
   return (
     <div className="space-y-6">
-      {/* 1. ประวัติ/อาการผู้ป่วย */}
+      {/* 1 */}
       <div>
         <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-tight">
-          ประวัติ/อาการผู้ป่วย
+          {t('symptoms.denseHistHeader')}
         </h3>
         <p className="text-xs text-slate-500 mt-1 mb-3.5">
-          โปรดเลือกจากรายการ หรือพิมพ์เพิ่มเติม (หากไม่ได้เลือกหรือพิมพ์ ระบบจะบันทึกว่า
-          "ไม่มีอาการผิดปกติ" โดยอัตโนมัติ)
+          {t('symptoms.denseHistHint')}
         </p>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-3.5 gap-x-8">
           <div className="space-y-3.5">
             {historyCol1.map((item) => (
-              <label
-                key={item.id}
-                className="flex items-center gap-3 cursor-pointer select-none group"
-              >
-                <input
-                  type="checkbox"
-                  className="custom-checkbox"
-                  checked={symptoms.includes(item.id)}
-                  onChange={() => handleToggleArray(item.id, symptoms, setSymptoms, true)}
-                />
-                <span className="text-sm text-slate-700 font-normal group-hover:text-slate-900 transition-colors">
-                  {item.label}
-                </span>
+              <label key={item.id} className="flex items-center gap-3 cursor-pointer select-none group">
+                <input type="checkbox" className="custom-checkbox" checked={symptoms.includes(item.id)} onChange={() => handleToggleArray(item.id, symptoms, setSymptoms, true)} />
+                <span className="text-sm text-slate-700 font-normal group-hover:text-slate-900 transition-colors">{item.label}</span>
               </label>
             ))}
           </div>
-
           <div className="space-y-3.5">
             {historyCol2.map((item) => (
-              <label
-                key={item.id}
-                className="flex items-center gap-3 cursor-pointer select-none group"
-              >
-                <input
-                  type="checkbox"
-                  className="custom-checkbox"
-                  checked={symptoms.includes(item.id)}
-                  onChange={() => handleToggleArray(item.id, symptoms, setSymptoms, true)}
-                />
-                <span className="text-sm text-slate-700 font-normal group-hover:text-slate-900 transition-colors">
-                  {item.label}
-                </span>
+              <label key={item.id} className="flex items-center gap-3 cursor-pointer select-none group">
+                <input type="checkbox" className="custom-checkbox" checked={symptoms.includes(item.id)} onChange={() => handleToggleArray(item.id, symptoms, setSymptoms, true)} />
+                <span className="text-sm text-slate-700 font-normal group-hover:text-slate-900 transition-colors">{item.label}</span>
               </label>
             ))}
           </div>
         </div>
       </div>
 
-      {/* 2. ลักษณะรอยโรค */}
+      {/* 2 */}
       <div className="pt-2">
         <h3 className="text-sm sm:text-base font-bold text-slate-900 mb-3.5">
-          ลักษณะรอยโรค
+          {t('symptoms.denseFeatHeader')}
         </h3>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-3.5 gap-x-8">
           <div className="space-y-3.5">
             {featureCol1.map((item) => (
-              <label
-                key={item.id}
-                className="flex items-center gap-3 cursor-pointer select-none group"
-              >
-                <input
-                  type="checkbox"
-                  className="custom-checkbox"
-                  checked={lesionFeatures.includes(item.id)}
-                  onChange={() => handleToggleArray(item.id, lesionFeatures, setLesionFeatures)}
-                />
-                <span className="text-sm text-slate-700 font-normal group-hover:text-slate-900 transition-colors">
-                  {item.label}
-                </span>
+              <label key={item.id} className="flex items-center gap-3 cursor-pointer select-none group">
+                <input type="checkbox" className="custom-checkbox" checked={lesionFeatures.includes(item.id)} onChange={() => handleToggleArray(item.id, lesionFeatures, setLesionFeatures)} />
+                <span className="text-sm text-slate-700 font-normal group-hover:text-slate-900 transition-colors">{item.label}</span>
               </label>
             ))}
           </div>
-
           <div className="space-y-3.5">
             {featureCol2.map((item) => (
-              <label
-                key={item.id}
-                className="flex items-center gap-3 cursor-pointer select-none group"
-              >
-                <input
-                  type="checkbox"
-                  className="custom-checkbox"
-                  checked={lesionFeatures.includes(item.id)}
-                  onChange={() => handleToggleArray(item.id, lesionFeatures, setLesionFeatures)}
-                />
-                <span className="text-sm text-slate-700 font-normal group-hover:text-slate-900 transition-colors">
-                  {item.label}
-                </span>
+              <label key={item.id} className="flex items-center gap-3 cursor-pointer select-none group">
+                <input type="checkbox" className="custom-checkbox" checked={lesionFeatures.includes(item.id)} onChange={() => handleToggleArray(item.id, lesionFeatures, setLesionFeatures)} />
+                <span className="text-sm text-slate-700 font-normal group-hover:text-slate-900 transition-colors">{item.label}</span>
               </label>
             ))}
           </div>
         </div>
       </div>
 
-      {/* 3. บริเวณรอยโรค */}
+      {/* 3 */}
       <div className="pt-2">
         <h3 className="text-sm sm:text-base font-bold text-slate-900 mb-3.5">
-          บริเวณรอยโรค
+          {t('symptoms.denseLocHeader')}
         </h3>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-3.5 gap-x-8">
           <div className="space-y-3.5">
             {locationCol1.map((item) => (
-              <label
-                key={item.id}
-                className="flex items-center gap-3 cursor-pointer select-none group"
-              >
-                <input
-                  type="checkbox"
-                  className="custom-checkbox"
-                  checked={lesionLocations.includes(item.id)}
-                  onChange={() => handleToggleArray(item.id, lesionLocations, setLesionLocations)}
-                />
-                <span className="text-sm text-slate-700 font-normal group-hover:text-slate-900 transition-colors">
-                  {item.label}
-                </span>
+              <label key={item.id} className="flex items-center gap-3 cursor-pointer select-none group">
+                <input type="checkbox" className="custom-checkbox" checked={lesionLocations.includes(item.id)} onChange={() => handleToggleArray(item.id, lesionLocations, setLesionLocations)} />
+                <span className="text-sm text-slate-700 font-normal group-hover:text-slate-900 transition-colors">{item.label}</span>
               </label>
             ))}
           </div>
-
           <div className="space-y-3.5">
             {locationCol2.map((item) => (
-              <label
-                key={item.id}
-                className="flex items-center gap-3 cursor-pointer select-none group"
-              >
-                <input
-                  type="checkbox"
-                  className="custom-checkbox"
-                  checked={lesionLocations.includes(item.id)}
-                  onChange={() => handleToggleArray(item.id, lesionLocations, setLesionLocations)}
-                />
-                <span className="text-sm text-slate-700 font-normal group-hover:text-slate-900 transition-colors">
-                  {item.label}
-                </span>
+              <label key={item.id} className="flex items-center gap-3 cursor-pointer select-none group">
+                <input type="checkbox" className="custom-checkbox" checked={lesionLocations.includes(item.id)} onChange={() => handleToggleArray(item.id, lesionLocations, setLesionLocations)} />
+                <span className="text-sm text-slate-700 font-normal group-hover:text-slate-900 transition-colors">{item.label}</span>
               </label>
             ))}
           </div>
         </div>
       </div>
 
-      {/* 4. รายละเอียดอาการเพิ่มเติม */}
+      {/* 4 */}
       <div className="pt-2">
-        <label
-          htmlFor="clinical-notes"
-          className="block text-sm sm:text-base font-bold text-slate-900 mb-2"
-        >
-          รายละเอียดอาการเพิ่มเติม:
+        <label htmlFor="clinical-notes" className="block text-sm sm:text-base font-bold text-slate-900 mb-2">
+          {t('symptoms.denseNoteHeader')}
         </label>
         <textarea
           id="clinical-notes"
           rows={4}
           value={clinicalNotes}
           onChange={(e) => setClinicalNotes(e.target.value)}
-          placeholder="เช่น มีอาการปวดเป็นบางครั้ง, เป็นมานาน 2 สัปดาห์ ..."
+          placeholder={t('symptoms.denseNoteHint')}
           className="w-full rounded-xl border border-slate-200/90 p-3.5 text-sm text-slate-800 placeholder-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 focus:outline-none transition resize-y min-h-[110px]"
         />
       </div>
