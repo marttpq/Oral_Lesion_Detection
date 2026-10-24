@@ -51,19 +51,17 @@ static/uploads/
 !static/uploads/.gitkeep
 static/outputs/
 !static/outputs/.gitkeep
-COOKIEproject/app/static/output/
-!COOKIEproject/app/static/output/.gitkeep
-COOKIEproject/app/results/
-!COOKIEproject/app/results/.gitkeep
+# ==========================================
+# Legacy Projects & Documents
+# ==========================================
+COOKIEproject/
+Densenet_backend/
+Oral_Document/
+Oral_Document.zip
 **/outputs/
 **/uploads/
 **/output/
 **/results/
-
-
-
-
-
 # ==========================================
 # Environment Variables & Secrets
 # ==========================================
