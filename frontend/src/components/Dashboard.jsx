@@ -266,7 +266,13 @@ export default function Dashboard() {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-xs sm:text-sm font-semibold text-blue-700 bg-blue-50 px-3.5 py-1.5 rounded-lg border border-blue-200 shadow-xs">
-                    {t('dashboard.modalConf')}: {((submitResult.apiResponse?.result?.confidence_score || 0) * 100).toFixed(1)}%
+                    {t('dashboard.modalConf')}: {(() => {
+                      const raw = Number(submitResult.apiResponse?.result?.confidence_score ?? 0);
+                      const pct = raw <= 1.0 ? raw * 100 : raw;
+                      return Number.isInteger(Math.round(pct * 1000) / 1000) && Number.isInteger(pct)
+                        ? `${pct}%`
+                        : `${pct.toFixed(2)}%`;
+                    })()}
                   </span>
                 </div>
               </div>
@@ -292,7 +298,7 @@ export default function Dashboard() {
                         <span className="font-medium text-slate-800">{box.label}</span>
                         <div className="flex items-center gap-2 text-xs text-slate-500 font-mono">
                           <span>[{box.xmin}, {box.ymin}, {box.xmax}, {box.ymax}]</span>
-                          <span className="font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded border border-blue-100">{(box.conf * 100).toFixed(1)}%</span>
+                          <span className="font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded border border-blue-100">{Math.round(box.conf * 100)}%</span>
                         </div>
                       </div>
                     ))}

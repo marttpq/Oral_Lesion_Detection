@@ -253,7 +253,7 @@ def _run_native_yolov7(image_bgr: np.ndarray) -> tuple:
                 "xmax": x2,
                 "ymax": y2,
                 "label": display_name,
-                "conf": round(d["conf"], 4)
+                "conf": round(float(d["conf"]), 2)
             })
 
     return cs_list, confidence_map, detections_raw
@@ -287,7 +287,7 @@ def _run_ultralytics_yolov8(image_bgr: np.ndarray) -> tuple:
                 "xmax": x1,
                 "ymax": y1,
                 "label": display_name,
-                "conf": round(float(box.conf), 4)
+                "conf": conf_val
             })
 
     return cs_list, confidence_map, detections_raw
@@ -318,15 +318,13 @@ def draw_cookie_boxes_to_b64(cv_img_bgr: np.ndarray, detections: List[Dict[str, 
         cv2.rectangle(image, (int(x), int(y) - th - 15), (int(x) + tw + 5, int(y)), box_color, -1)
         cv2.putText(image, txt, (int(x) + 2, int(y) - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, text_color, 2)
 
-    _, buffer = cv2.imencode(".jpg", image, [int(cv2.IMWRITE_JPEG_QUALITY), 88])
+    _, buffer = cv2.imencode(".jpg", image, [int(cv2.IMWRITE_JPEG_QUALITY), 85])
     return base64.b64encode(buffer).decode("utf-8")
 
-def infer_yolo(pil_image: Image.Image, prompt_text: str = "", model_version: str = "v7") -> Dict[str, Any]:
+def infer_yolo(image_bgr: np.ndarray, prompt_text: str = "", model_version: str = "v7") -> Dict[str, Any]:
     """
     Executes YOLO inference with COOKIE Project pipeline, clinical symptom matching, and scoring logic.
     """
-    image_bgr = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR)
-
     if model_version.lower() in ["v8", "yolov8"]:
         active_ver = "v8"
         cs_list, confidence_map, detections_raw = _run_ultralytics_yolov8(image_bgr)
@@ -341,13 +339,14 @@ def infer_yolo(pil_image: Image.Image, prompt_text: str = "", model_version: str
     filtered_boxes = _filter_overlapping_boxes(detections_raw)
 
     # Parse patient symptoms tokens
-    patient_tokens: set = set()
+    patient_tokens: list = []
     if prompt_text:
-        for tok in str(prompt_text).replace(",", " ").replace(";", " ").split():
-            cleaned = tok.strip().lower()
+        raw_tokens = str(prompt_text).replace(",", " ").replace(";", " ").split()
+        for tok in raw_tokens:
+            cleaned = tok.strip()
             if cleaned:
-                patient_tokens.add(cleaned)
-        patient_tokens.add(str(prompt_text).strip().lower())
+                patient_tokens.append(cleaned)
+                patient_tokens.append(cleaned.lower())
 
     # Calculate average confidences matching COOKIE _finalise_inference
     avg_conf: Dict[str, float] = {
@@ -361,13 +360,8 @@ def infer_yolo(pil_image: Image.Image, prompt_text: str = "", model_version: str
         name_out = "No Detection"
         for condition, markers in PATIENT_CONDITIONS.items():
             if condition in cs_list:
-                has_match = False
-                for marker in markers:
-                    marker_clean = marker.lower()
-                    if any(marker_clean in tok or tok in marker_clean for tok in patient_tokens):
-                        has_match = True
-                        break
-                if has_match:
+                # Check if any marker matches patient symptoms
+                if any(m in patient_tokens or m.lower() in [p.lower() for p in patient_tokens] for m in markers):
                     name_out = condition
                     unmatch = False
                     break
@@ -386,7 +380,7 @@ def infer_yolo(pil_image: Image.Image, prompt_text: str = "", model_version: str
             eva_output_raw = round(sum_output / 2.0, 2) if sum_output > 0.6 else sum_output
 
     eva_output = int(round(eva_output_raw * 100))
-    confidence_score = round(eva_output / 100.0, 4)
+    confidence_score = round(eva_output / 100.0, 2)
 
     # Draw COOKIE stylized boxes
     drawn_b64 = draw_cookie_boxes_to_b64(image_bgr, filtered_boxes)
@@ -482,8 +476,10 @@ async def run_inference(
     
     try:
         image_bytes = await image.read()
-        pil_image = Image.open(io.BytesIO(image_bytes))
-        pil_image = ImageOps.exif_transpose(pil_image).convert("RGB")
+        nparr = np.frombuffer(image_bytes, np.uint8)
+        image_bgr = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+        if image_bgr is None:
+            raise ValueError("OpenCV failed to decode image bytes.")
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -492,10 +488,11 @@ async def run_inference(
 
     norm_type = modelType.strip().upper()
     if "V8" in norm_type:
-        result = infer_yolo(pil_image, text or "", model_version="v8")
+        result = infer_yolo(image_bgr, text or "", model_version="v8")
     elif "YOLO" in norm_type or "V7" in norm_type:
-        result = infer_yolo(pil_image, text or "", model_version="v7")
+        result = infer_yolo(image_bgr, text or "", model_version="v7")
     elif norm_type in ["DENSENET-BERT", "DENSENET", "DENSENET+WANGCHANBERTA"]:
+        pil_image = Image.fromarray(cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB))
         result = infer_densenet_bert(pil_image, text or "")
     else:
         raise HTTPException(
