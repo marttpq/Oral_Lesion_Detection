@@ -37,6 +37,7 @@ const LESION_LOCATION_MAP = {
 };
 
 export default function Dashboard() {
+  const BACKEND_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
   const { t } = useLanguage();
   const { user } = useAuth(); // Retrieve authenticated user
 
@@ -284,7 +285,7 @@ export default function Dashboard() {
                     <span className="text-[11px] text-slate-400 font-normal">{t('dashboard.modalImgDesc')} {submitResult.apiResponse?.model_used}</span>
                   </div>
                   <div className="p-3 sm:p-4 flex items-center justify-center min-h-[300px] max-h-[560px] sm:max-h-[620px] bg-slate-950/5">
-                    <img src={submitResult.apiResponse.result.processed_image_url.startsWith('http') || submitResult.apiResponse.result.processed_image_url.startsWith('blob:') ? submitResult.apiResponse.result.processed_image_url : `http://localhost:8000${submitResult.apiResponse.result.processed_image_url}`} alt={t('dashboard.modalImgContext')} className="max-h-[520px] sm:max-h-[580px] w-auto max-w-full rounded-xl object-contain shadow-sm border border-slate-200/60 bg-white" onError={(e) => { if (previewUrl) e.target.src = previewUrl; }} />
+                    <img src={submitResult.apiResponse.result.processed_image_url.startsWith('http') || submitResult.apiResponse.result.processed_image_url.startsWith('blob:') ? submitResult.apiResponse.result.processed_image_url : `${BACKEND_URL}${submitResult.apiResponse.result.processed_image_url}`} alt={t('dashboard.modalImgContext')} className="max-h-[520px] sm:max-h-[580px] w-auto max-w-full rounded-xl object-contain shadow-sm border border-slate-200/60 bg-white" onError={(e) => { if (previewUrl) e.target.src = previewUrl; }} />
                   </div>
                 </div>
               )}
