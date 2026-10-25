@@ -33,14 +33,17 @@ OUTPUTS_DIR = STATIC_DIR / "outputs"
 UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
 OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
 
-# Add AI engine services to sys.path for direct imports
+# Add AI engine and backend services to sys.path for direct imports
 YOLO_SERVICE_DIR = BASE_DIR / "ai-engine" / "yolo-service"
 DENSENET_SERVICE_DIR = BASE_DIR / "ai-engine" / "densenet-bert-service"
+BACKEND_DIR = BASE_DIR / "backend"
 
 if str(YOLO_SERVICE_DIR) not in sys.path:
     sys.path.insert(0, str(YOLO_SERVICE_DIR))
 if str(DENSENET_SERVICE_DIR) not in sys.path:
     sys.path.insert(0, str(DENSENET_SERVICE_DIR))
+if str(BACKEND_DIR) not in sys.path:
+    sys.path.insert(0, str(BACKEND_DIR))
 
 # ==========================================
 # 2. Initialize FastAPI Application
@@ -62,6 +65,21 @@ app.add_middleware(
 
 # 2.2 Mount Static Files
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
+
+# 2.3 Mount Auth & Database
+try:
+    from database import engine, Base
+    from routers import auth as auth_router
+
+    @app.on_event("startup")
+    async def startup():
+        async with engine.begin() as conn:
+            await conn.run_sync(Base.metadata.create_all)
+
+    app.include_router(auth_router.router)
+    logger.info("Successfully mounted Auth router and database connection.")
+except Exception as e:
+    logger.warning(f"Auth router / database not mounted: {e}")
 
 # ==========================================
 # 3. Response Models & Helper Functions

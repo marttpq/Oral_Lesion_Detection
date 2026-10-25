@@ -16,6 +16,7 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const BACKEND_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
     const handleEmailSubmit = async (e) => {
         e.preventDefault();
@@ -23,7 +24,7 @@ export default function Login() {
         setError(null);
         try {
             const endpoint = isRegister ? '/api/auth/register' : '/api/auth/login';
-            const response = await fetch(`http://localhost:8000${endpoint}`, {
+            const response = await fetch(`${BACKEND_URL}${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password })
@@ -36,7 +37,7 @@ export default function Login() {
 
             if (isRegister) {
                 // If registered successfully, automatically login
-                const loginRes = await fetch('http://localhost:8000/api/auth/login', {
+                const loginRes = await fetch(`${BACKEND_URL}/api/auth/login`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, password })
@@ -62,7 +63,7 @@ export default function Login() {
             setLoading(true);
             setError(null);
             try {
-                const res = await fetch('http://localhost:8000/api/auth/google', {
+                const res = await fetch(`${BACKEND_URL}/api/auth/google`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ credential: tokenResponse.access_token }) // useGoogleLogin access_token is sent for simplicity, backend needs id_token verify or tokeninfo
