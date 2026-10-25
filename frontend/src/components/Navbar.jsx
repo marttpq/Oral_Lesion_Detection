@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Activity, LogOut, ChevronDown, Menu, X } from 'lucide-react';
+import { Activity, LogOut, LogIn, ChevronDown, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useAuth } from '../contexts/AuthContext';
@@ -87,9 +87,17 @@ export default function Navbar() {
                     <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest mb-0.5">Signed in as</p>
                     <p className="text-sm font-semibold text-slate-800 truncate" title={user.email}>{user.email}</p>
                   </div>
-                  <div className="p-1">
+                  <div className="p-1 space-y-0.5">
+                    <Link
+                      to="/login"
+                      onClick={() => setShowDropdown(false)}
+                      className="w-full flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition"
+                    >
+                      <LogIn className="w-4 h-4 text-blue-600" />
+                      {lang === 'TH' ? 'หน้าล็อกอิน (ตรวจคำศัพท์)' : 'Login Page (Review Words)'}
+                    </Link>
                     <button onClick={() => { setShowDropdown(false); logout(); }} className="w-full flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-slate-600 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition">
-                      <LogOut className="w-4 h-4" />
+                      <LogOut className="w-4 h-4 text-slate-400" />
                       Logout
                     </button>
                   </div>
@@ -142,23 +150,33 @@ export default function Navbar() {
               </div>
 
               {user ? (
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between mt-2">
-                  <div className="flex items-center gap-3 overflow-hidden">
-                    {user.picture ? (
-                      <img src={user.picture} alt="Profile" className="w-10 h-10 rounded-full object-cover border border-slate-200" referrerPolicy="no-referrer" />
-                    ) : (
-                      <div className="w-10 h-10 rounded-full bg-blue-100 text-blue-700 font-bold flex items-center justify-center shrink-0">
-                        {user.email.charAt(0).toUpperCase()}
+                <div className="space-y-2 mt-2">
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+                    <div className="flex items-center gap-3 overflow-hidden">
+                      {user.picture ? (
+                        <img src={user.picture} alt="Profile" className="w-10 h-10 rounded-full object-cover border border-slate-200" referrerPolicy="no-referrer" />
+                      ) : (
+                        <div className="w-10 h-10 rounded-full bg-blue-100 text-blue-700 font-bold flex items-center justify-center shrink-0">
+                          {user.email.charAt(0).toUpperCase()}
+                        </div>
+                      )}
+                      <div className="flex flex-col truncate">
+                        <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Signed In</span>
+                        <span className="text-sm font-bold text-slate-800 truncate leading-tight">{user.email}</span>
                       </div>
-                    )}
-                    <div className="flex flex-col truncate">
-                      <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Signed In</span>
-                      <span className="text-sm font-bold text-slate-800 truncate leading-tight">{user.email}</span>
                     </div>
+                    <button onClick={() => { setShowMobileMenu(false); logout(); }} className="p-2.5 text-rose-600 bg-rose-50 hover:bg-rose-100 rounded-lg shrink-0">
+                      <LogOut className="w-5 h-5" />
+                    </button>
                   </div>
-                  <button onClick={() => { setShowMobileMenu(false); logout(); }} className="p-2.5 text-rose-600 bg-rose-50 hover:bg-rose-100 rounded-lg shrink-0">
-                    <LogOut className="w-5 h-5" />
-                  </button>
+                  <Link
+                    to="/login"
+                    onClick={() => setShowMobileMenu(false)}
+                    className="w-full py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-semibold rounded-xl text-center flex items-center justify-center gap-2 transition"
+                  >
+                    <LogIn className="w-4 h-4 text-blue-600" />
+                    {lang === 'TH' ? 'ตรวจคำศัพท์หน้าล็อกอิน (Login)' : 'Review Login Page'}
+                  </Link>
                 </div>
               ) : (
                 <Link to="/login" onClick={() => setShowMobileMenu(false)} className="w-full mt-2 py-3.5 bg-slate-800 hover:bg-slate-900 text-white text-base font-medium rounded-xl text-center">

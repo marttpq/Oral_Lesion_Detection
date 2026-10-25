@@ -9,10 +9,7 @@ import DiseaseDetail from './components/DiseaseDetail';
 import { useAuth } from './contexts/AuthContext';
 
 function ProtectedRoute({ children }) {
-  const { user } = useAuth();
-  if (!user) {
-    return <Navigate to="/login" state={{ fromProtected: true }} replace />;
-  }
+  // Bypassed for doctor review and UI/wording verification
   return children;
 }
 

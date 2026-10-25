@@ -3,7 +3,11 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-    const [token, setToken] = useState(localStorage.getItem('token') || null);
+    // Default to demo token to bypass login for frontend doctor review/testing
+    const [token, setToken] = useState(() => {
+        const saved = localStorage.getItem('token');
+        return saved !== null ? saved : 'demo-doctor-token';
+    });
 
     // Helper to decode JWT payload safely
     const decodeJWT = (jwtToken) => {
@@ -23,12 +27,16 @@ export function AuthProvider({ children }) {
     // Derive user synchronously to avoid delay or race condition
     let user = null;
     if (token) {
-        const decoded = decodeJWT(token);
-        if (decoded && decoded.sub) {
-            user = { email: decoded.sub, id: decoded.id, picture: decoded.picture, token };
+        if (token === 'demo-doctor-token') {
+            user = { email: 'doctor@demo-clinic.org', role: 'Doctor (Review)', id: 'demo-doc', token };
         } else {
-            // Fallback for unexpected token structures
-            user = { email: 'User', token };
+            const decoded = decodeJWT(token);
+            if (decoded && decoded.sub) {
+                user = { email: decoded.sub, id: decoded.id, picture: decoded.picture, token };
+            } else {
+                // Fallback for unexpected token structures
+                user = { email: 'Doctor (Review)', token };
+            }
         }
     }
     const loading = false; // Synchronous, so no loading delay
